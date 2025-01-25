@@ -7,7 +7,7 @@ import { SiSolana } from 'react-icons/si';
 import { RiNftFill } from 'react-icons/ri';
 import { IoSchoolOutline } from 'react-icons/io5';
 import Link from 'next/link';
-
+import Image from 'next/image';
 interface ToastProps {
   message: string;
   onClose: () => void;
@@ -63,7 +63,7 @@ const chainIcons = {
   BTC: <FaBitcoin className="w-8 h-8 text-[#F7931A]" />,
   SOL: <SiSolana className="w-8 h-8 text-[#00FFA3]" />,
   BNB: <RiNftFill className="w-8 h-8 text-[#F0B90B]" />,
-  TRX: <img src="/logos/trx.jpeg" className="w-8 h-8" />
+  TRX: <Image src="/logos/trx.jpeg" alt="TRX" width={32} height={32} />
 };
 
 const physicalDonations = [
