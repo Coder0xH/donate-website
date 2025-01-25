@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Modal from "@/components/ui/Modal";
+import { IconType } from 'react-icons';
 
 interface StatCardProps {
-  icon: any;
+  icon: IconType;
   value: string;
   title: string;
   color: string;

@@ -42,14 +42,10 @@ const Modal: React.FC<ModalProps> = ({
           <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
             {/* 弹框内容 */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="w-full max-w-2xl overflow-hidden rounded-[20px]"
-              style={{
-                background: 'rgba(23, 23, 23, 0.95)',
-                backdropFilter: 'blur(20px)',
-              }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className={`relative w-full max-w-2xl p-8 rounded-3xl bg-gradient-to-br ${color} to-[#1A1A1A] shadow-2xl`}
             >
               {/* 头部区域 */}
               <div 

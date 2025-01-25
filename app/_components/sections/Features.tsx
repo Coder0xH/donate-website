@@ -1,8 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { BsGlobeAmericas } from 'react-icons/bs';
-import { SiEthereum } from 'react-icons/si';
 import { SiSolana } from 'react-icons/si';
 import { FaHeart, FaDollarSign } from 'react-icons/fa';
 import { GradientCard } from '@/components/ui/GradientCard';

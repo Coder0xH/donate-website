@@ -90,7 +90,6 @@ const physicalDonations = [
 ];
 
 export default function DonatePage() {
-  const [showToast, setShowToast] = useState(false);
   const walletAddresses = {
     ethereum: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
     bitcoin: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',

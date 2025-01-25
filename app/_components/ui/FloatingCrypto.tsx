@@ -1,9 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { IconType } from 'react-icons';
 
 interface FloatingCryptoProps {
-  Icon: any;
+  Icon: IconType;
   color: string;
 }
 

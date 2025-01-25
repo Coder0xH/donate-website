@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaSchool, FaBookReader, FaChalkboardTeacher } from 'react-icons/fa';
+import { IconType } from 'react-icons';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -19,11 +20,11 @@ interface Project {
   id: string;
   title: string;
   description: string;
-  icon: any;
+  icon: IconType;
   stats: ProjectStat[];
 }
 
-const ProjectCard = ({ title, description, icon: Icon, stats, id }: Project) => (
+const ProjectCard = ({ title, description, icon: Icon, stats }: Omit<Project, 'id'>) => (
   <motion.div 
     variants={fadeInUp}
     whileHover={{ y: -5 }}

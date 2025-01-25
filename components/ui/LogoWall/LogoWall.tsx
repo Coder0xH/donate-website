@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from "react";
+import Image from 'next/image';
 
 interface LogoItem {
   imgUrl: string;
@@ -102,20 +103,24 @@ function LogoWall({
       >
         <div className={groupClass}>
           {items.map((item, idx) => (
-            <img
+            <Image
               key={idx}
               src={item.imgUrl}
               alt={item.altText}
+              width={100}
+              height={100}
               className={imageClass}
             />
           ))}
         </div>
         <div aria-hidden="true" className={groupClass}>
           {items.map((item, idx) => (
-            <img
+            <Image
               key={`dup1-${idx}`}
               src={item.imgUrl}
               alt={item.altText}
+              width={100}
+              height={100}
               className={imageClass}
             />
           ))}
@@ -129,20 +134,24 @@ function LogoWall({
       >
         <div className={`${groupClass} reverse-x`}>
           {items.map((item, idx) => (
-            <img
+            <Image
               key={`rev-${idx}`}
               src={item.imgUrl}
               alt={item.altText}
+              width={100}
+              height={100}
               className={imageClass}
             />
           ))}
         </div>
         <div aria-hidden="true" className={`${groupClass} reverse-x`}>
           {items.map((item, idx) => (
-            <img
+            <Image
               key={`dup2-${idx}`}
               src={item.imgUrl}
               alt={item.altText}
+              width={100}
+              height={100}
               className={imageClass}
             />
           ))}

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { IconType } from 'react-icons';
 import { StatCardProps } from './types';
 import { motion } from 'framer-motion';
 import Modal from '@/components/ui/Modal';
@@ -91,39 +90,41 @@ const StatCard: React.FC<StatCardProps> = ({
         </div>
       </motion.div>
 
-      <Modal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        title={details.title}
-        subtitle="Jan 24, 8:00 PM–Feb 23, 8:00 PM"
-        participants={722}
-        endTime="04d 08h 44m 13s"
-        color={color}
-      >
-        <div className="space-y-3">
-          {details.items.map((item, index) => (
-            <div
-              key={index}
-              className="bg-black/40 backdrop-blur-xl rounded-2xl p-4 hover:bg-black/50 transition-all duration-300"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-white/60 text-sm">{item.date}</span>
-                <span className={`px-3 py-1 rounded-full text-xs ${
-                  item.status === '已完成' ? 'bg-green-500/20 text-green-400' :
-                  item.status === '进行中' ? 'bg-blue-500/20 text-blue-400' :
-                  'bg-gray-500/20 text-gray-400'
-                }`}>
-                  {item.status}
-                </span>
+      {details && (
+        <Modal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          title={details.title}
+          subtitle="Jan 24, 8:00 PM–Feb 23, 8:00 PM"
+          participants={722}
+          endTime="04d 08h 44m 13s"
+          color={color}
+        >
+          <div className="space-y-3">
+            {details.items.map((item, index) => (
+              <div
+                key={index}
+                className="bg-black/40 backdrop-blur-xl rounded-2xl p-4 hover:bg-black/50 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-white/60 text-sm">{item.date}</span>
+                  <span className={`px-3 py-1 rounded-full text-xs ${
+                    item.status === '已完成' ? 'bg-green-500/20 text-green-400' :
+                    item.status === '进行中' ? 'bg-blue-500/20 text-blue-400' :
+                    'bg-gray-500/20 text-gray-400'
+                  }`}>
+                    {item.status}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-white font-medium text-xl">{item.amount}</span>
+                  <span className="text-white/50 text-sm">{item.description}</span>
+                </div>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-white font-medium text-xl">{item.amount}</span>
-                <span className="text-white/50 text-sm">{item.description}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Modal>
+            ))}
+          </div>
+        </Modal>
+      )}
     </>
   );
 };

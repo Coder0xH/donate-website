@@ -130,7 +130,7 @@ export default function About() {
                 <span className="text-blue-400">function</span>{" "}
                 <span className="text-purple-400">developer</span>
                 <span className="text-gray-400">(</span>
-                <span className="text-orange-400">"blockchain"</span>
+                <span className="text-orange-400">&ldquo;blockchain&rdquo;</span>
                 <span className="text-gray-400">)</span>{" "}
                 <span className="text-blue-400">extends</span>{" "}
                 <span className="text-purple-400">artist</span>
