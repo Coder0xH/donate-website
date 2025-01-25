@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "home": "Home",
+    "donate": "Donate",
+    "projects": "Projects", 
+    "about": "About"
+  },
+  "hero": {
+    "title": "On-Chain Charity",
+    "subtitle": "Transparent Tracking",
+    "description": "Transparent donations, blockchain witnesses every love, through blockchain technology, making every donation visible.",
+    "donate": "Donate Now",
+    "learnMore": "Learn More"
+  }
+} 

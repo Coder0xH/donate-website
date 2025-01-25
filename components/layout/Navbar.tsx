@@ -9,10 +9,13 @@ import { SiSolana } from 'react-icons/si'
 import { HiLightningBolt } from 'react-icons/hi'
 import Image from 'next/image'
 import { BsTwitterX } from "react-icons/bs"
+import { useTranslation } from '@/app/i18n/client'
+import LanguageSwitcher from '../ui/LanguageSwitcher'
 
-export default function Navbar() {
+export default function Navbar({ lng }: { lng: string }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
+  const { t } = useTranslation(lng, 'common')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,9 +27,10 @@ export default function Navbar() {
   }, [])
 
   const navItems = [
-    { href: '/', label: 'Home' },
-    { href: '/donate', label: 'Donate' },
-    { href: '/projects', label: 'Projects' },
+    { href: '/', label: t('nav.home') },
+    { href: '/donate', label: t('nav.donate') },
+    { href: '/projects', label: t('nav.projects') },
+    { href: '/about', label: t('nav.about') },
   ]
 
   return (
@@ -76,7 +80,7 @@ export default function Navbar() {
               {navItems.map((item) => (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={`/${lng}${item.href}`}
                   className="relative group"
                 >
                   <div className="relative px-3 py-2">
@@ -230,9 +234,13 @@ export default function Navbar() {
                 </motion.div>
               </div>
             </div>
+            
           </div>
+          
         </motion.div>
+       
       </div>
+      <LanguageSwitcher lng={lng} />
     </motion.nav>
   )
 }

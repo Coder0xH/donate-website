@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "home": "首页",
+    "donate": "捐赠",
+    "projects": "项目",
+    "about": "关于"
+  },
+  "hero": {
+    "title": "链上公益",
+    "subtitle": "透明追踪",
+    "description": "透明捐赠，区块链见证每份爱，通过区块链技术，让每一笔捐赠都清晰可见。",
+    "donate": "立即捐赠",
+    "learnMore": "了解项目"
+  }
+} 
