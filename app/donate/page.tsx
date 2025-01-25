@@ -6,6 +6,7 @@ import { FaBitcoin, FaEthereum, FaBook, FaLaptop, FaBoxOpen } from 'react-icons/
 import { SiSolana } from 'react-icons/si';
 import { RiNftFill } from 'react-icons/ri';
 import { IoSchoolOutline } from 'react-icons/io5';
+import Link from 'next/link';
 
 interface ToastProps {
   message: string;
@@ -98,12 +99,13 @@ export default function DonatePage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col bg-white dark:bg-dark">
+    <main className="min-h-screen bg-black text-white">
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-600/5 to-primary-400/5 dark:from-primary-600/10 dark:to-primary-400/10" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-400/20 via-transparent to-transparent opacity-30" />
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-blue-500/20 via-transparent to-transparent" />
+          <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-teal-400/10 to-transparent" />
+          <div className="absolute h-full w-full bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -113,54 +115,69 @@ export default function DonatePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
+            <motion.div className="inline-block mb-4">
+              <motion.span 
+                className="inline-block text-sm font-medium px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-500/10 to-teal-400/10 border border-blue-500/20 text-blue-400"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                Web3 捐赠平台
+              </motion.span>
+            </motion.div>
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent"
-              whileHover={{ scale: 1.02 }}
+              className="text-6xl md:text-8xl font-bold"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
             >
-              一起助力教育
+              <span className="inline-block bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
+                链上公益
+              </span>
+              <br />
+              <span className="inline-block mt-2 text-zinc-300">
+                爱心永恒
+              </span>
             </motion.h1>
-            <motion.p 
-              className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              您的每一份支持都将帮助西藏地区的孩子获得更好的教育机会
-            </motion.p>
           </motion.div>
 
-          {/* Donation Methods Tabs */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-8">
+          {/* Donation Methods */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Crypto Donations */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="bg-white/50 dark:bg-dark-100/50 backdrop-blur-lg rounded-3xl p-8 shadow-xl"
+              className="relative group"
             >
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-                <FaBoxOpen className="w-6 h-6 mr-2 text-primary-500" />
-                加密货币捐赠
-              </h2>
-              <div className="space-y-4">
-                {Object.entries(walletAddresses).map(([chain, address]) => (
-                  <motion.div
-                    key={chain}
-                    whileHover={{ y: -2 }}
-                    className="bg-white dark:bg-dark-200 rounded-xl p-4 shadow-sm"
-                  >
-                    <div className="flex items-center space-x-3 mb-2">
-                      {chainIcons[chain as keyof typeof chainIcons]}
-                      <h3 className="text-lg font-medium text-gray-800 dark:text-white capitalize">
-                        {chain}
-                      </h3>
-                    </div>
-                    <p className="font-mono text-sm text-gray-600 dark:text-gray-400 break-all bg-gray-50 dark:bg-dark-300 p-2 rounded-lg">
-                      {address}
-                    </p>
-                    <CopyButton address={address} />
-                  </motion.div>
-                ))}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-teal-400 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+              <div className="relative bg-black/90 backdrop-blur-xl rounded-xl p-8">
+                <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+                  加密货币捐赠
+                </h2>
+                <div className="space-y-6">
+                  {Object.entries(walletAddresses).map(([chain, address]) => (
+                    <motion.div
+                      key={chain}
+                      whileHover={{ y: -2 }}
+                      className="relative group"
+                    >
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/50 to-teal-400/50 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 blur" />
+                      <div className="relative bg-zinc-900/80 rounded-lg p-4">
+                        <div className="flex items-center space-x-3 mb-2">
+                          {chainIcons[chain as keyof typeof chainIcons]}
+                          <h3 className="text-lg font-medium text-white capitalize">
+                            {chain}
+                          </h3>
+                        </div>
+                        <p className="font-mono text-sm text-zinc-400 break-all bg-black/50 p-3 rounded-lg">
+                          {address}
+                        </p>
+                        <CopyButton address={address} />
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </motion.div>
 
@@ -169,53 +186,66 @@ export default function DonatePage() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="bg-white/50 dark:bg-dark-100/50 backdrop-blur-lg rounded-3xl p-8 shadow-xl"
+              className="relative group"
             >
-              <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
-                <FaBoxOpen className="w-6 h-6 mr-2 text-primary-500" />
-                物品捐赠
-              </h2>
-              <div className="space-y-6">
-                {physicalDonations.map((item) => (
-                  <motion.div
-                    key={item.id}
-                    whileHover={{ y: -2 }}
-                    className="bg-white dark:bg-dark-200 rounded-xl p-6 shadow-sm"
-                  >
-                    <div className="flex items-start space-x-4">
-                      <div className="flex-shrink-0">{item.icon}</div>
-                      <div>
-                        <h3 className="text-lg font-medium text-gray-800 dark:text-white mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">
-                          {item.description}
-                        </p>
-                        <div className="space-y-1">
-                          {item.requirements.map((req, idx) => (
-                            <div key={idx} className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                              <span className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-2"></span>
-                              {req}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-rose-500 to-orange-400 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+              <div className="relative bg-black/90 backdrop-blur-xl rounded-xl p-8">
+                <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-rose-400 to-orange-400 bg-clip-text text-transparent">
+                  物品捐赠
+                </h2>
+                <div className="space-y-6">
+                  {physicalDonations.map((item) => (
+                    <motion.div
+                      key={item.id}
+                      whileHover={{ y: -2 }}
+                      className="relative group"
+                    >
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-rose-500/50 to-orange-400/50 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 blur" />
+                      <div className="relative bg-zinc-900/80 rounded-lg p-4">
+                        <div className="flex items-start space-x-4">
+                          <div className="flex-shrink-0">{item.icon}</div>
+                          <div>
+                            <h3 className="text-lg font-medium text-white mb-2">
+                              {item.title}
+                            </h3>
+                            <p className="text-zinc-400 text-sm mb-3">
+                              {item.description}
+                            </p>
+                            <div className="space-y-1">
+                              {item.requirements.map((req, idx) => (
+                                <div key={idx} className="flex items-center text-sm text-zinc-500">
+                                  <span className="w-1.5 h-1.5 bg-rose-500 rounded-full mr-2"></span>
+                                  {req}
+                                </div>
+                              ))}
                             </div>
-                          ))}
+                          </div>
                         </div>
                       </div>
+                    </motion.div>
+                  ))}
+                  
+                  <motion.div 
+                    whileHover={{ y: -2 }}
+                    className="relative group mt-8"
+                  >
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-rose-500/50 to-orange-400/50 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 blur" />
+                    <div className="relative bg-zinc-900/80 rounded-lg p-6">
+                      <h3 className="text-lg font-medium text-white mb-2">
+                        物品捐赠地址
+                      </h3>
+                      <p className="text-zinc-400 mb-4">
+                        西藏自治区拉萨市城关区北京中路28号
+                        <br />
+                        希漫天使公益基金会
+                        <br />
+                        联系电话：+86 891-1234567
+                      </p>
+                      <p className="text-sm text-zinc-500">
+                        工作时间：周一至周五 9:00-17:00
+                      </p>
                     </div>
                   </motion.div>
-                ))}
-                
-                <div className="mt-6 bg-primary-50 dark:bg-primary-900/20 rounded-xl p-6">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                    物品捐赠地址
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">
-                    西藏自治区拉萨市城关区北京中路28号 希漫天使公益基金会
-                    <br />
-                    联系电话：+86 891-1234567
-                  </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    工作时间：周一至周五 9:00-17:00
-                  </p>
                 </div>
               </div>
             </motion.div>
@@ -228,7 +258,7 @@ export default function DonatePage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <div className="inline-flex items-center space-x-2 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+            <Link href="/impact" className="inline-flex items-center space-x-2 text-blue-400 hover:text-blue-300">
               <span className="text-lg">了解我们的影响力</span>
               <motion.div
                 animate={{ x: [0, 5, 0] }}
@@ -236,7 +266,7 @@ export default function DonatePage() {
               >
                 →
               </motion.div>
-            </div>
+            </Link>
           </motion.div>
         </div>
       </section>
