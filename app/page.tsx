@@ -3,8 +3,33 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaEthereum, FaBitcoin, FaHeart } from 'react-icons/fa';
-import { SiSolana } from 'react-icons/si';
+import { 
+  FaEthereum, 
+  FaBitcoin, 
+  FaHeart,
+  FaMonero,
+  FaDollarSign
+} from 'react-icons/fa';
+import { 
+  SiSolana, 
+  SiDogecoin, 
+  SiLitecoin, 
+  SiChainlink, 
+  SiBinance,
+  SiCardano
+} from 'react-icons/si';
+
+const cryptoIcons = [
+  { icon: FaEthereum, color: 'text-blue-500' },
+  { icon: FaBitcoin, color: 'text-yellow-500' },
+  { icon: SiSolana, color: 'text-purple-500' },
+  { icon: SiDogecoin, color: 'text-yellow-400' },
+  { icon: SiLitecoin, color: 'text-gray-400' },
+  { icon: SiChainlink, color: 'text-blue-400' },
+  { icon: SiBinance, color: 'text-yellow-300' },
+  { icon: SiCardano, color: 'text-blue-300' },
+  { icon: FaMonero, color: 'text-orange-500' },
+];
 
 const GradientCard = ({ children }: { children: React.ReactNode }) => (
   <div className="relative group">
@@ -32,22 +57,24 @@ const DecayCard = ({ title, value, icon: Icon }: { title: string; value: string;
   </motion.div>
 );
 
-const FloatingHeart = () => (
+const FloatingCrypto = ({ Icon, color }: { Icon: any; color: string }) => (
   <motion.div
     initial={{ y: 0, opacity: 0.5 }}
     animate={{ 
       y: -20,
       opacity: [0.5, 1, 0.5],
       scale: [1, 1.2, 1],
+      rotate: [-10, 10]
     }}
     transition={{
       duration: 2,
       repeat: Infinity,
       repeatType: "reverse",
+      times: [0, 0.5, 1]
     }}
     className="absolute"
   >
-    <FaHeart className="text-red-500/30" />
+    <Icon className={`w-6 h-6 ${color} opacity-30`} />
   </motion.div>
 );
 
@@ -61,17 +88,25 @@ export default function Home() {
           <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-teal-400/10 to-transparent" />
           <div className="absolute h-full w-full bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
           
-          {/* 添加漂浮的爱心背景 */}
+          {/* 添加漂浮的加密货币图标 */}
           <div className="absolute inset-0 overflow-hidden">
-            {Array.from({ length: 20 }).map((_, i) => (
-              <div key={i} className="absolute" style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                transform: `scale(${0.5 + Math.random() * 1.5})`,
-              }}>
-                <FloatingHeart />
-              </div>
-            ))}
+            {Array.from({ length: 30 }).map((_, i) => {
+              const randomCrypto = cryptoIcons[Math.floor(Math.random() * cryptoIcons.length)];
+              return (
+                <div 
+                  key={i} 
+                  className="absolute" 
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    transform: `scale(${0.5 + Math.random() * 1.5})`,
+                    animationDelay: `${Math.random() * 2}s`
+                  }}
+                >
+                  <FloatingCrypto Icon={randomCrypto.icon} color={randomCrypto.color} />
+                </div>
+              );
+            })}
           </div>
         </div>
         
