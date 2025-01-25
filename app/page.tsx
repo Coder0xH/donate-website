@@ -128,15 +128,15 @@ const StatCard = ({ icon: Icon, value, title, color, details }: {
         endTime="04d 08h 44m 13s"
         color={color}
       >
-        <div className="space-y-4">
+        <div className="space-y-3">
           <div className="text-lg text-white/90 mb-2">Rewards</div>
           {details.items.map((item, index) => (
             <div
               key={index}
-              className="bg-black/20 backdrop-blur-sm rounded-xl p-4 hover:bg-black/30 transition-all duration-200"
+              className="bg-black/40 backdrop-blur-xl rounded-2xl p-4 hover:bg-black/50 transition-all duration-300"
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-white/70 text-sm">{item.date}</span>
+                <span className="text-white/60 text-sm">{item.date}</span>
                 <span className={`px-3 py-1 rounded-full text-xs ${
                   item.status === '已完成' ? 'bg-green-500/20 text-green-400' :
                   item.status === '进行中' ? 'bg-blue-500/20 text-blue-400' :
@@ -146,8 +146,8 @@ const StatCard = ({ icon: Icon, value, title, color, details }: {
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-white font-medium text-lg">{item.amount}</span>
-                <span className="text-white/60 text-sm">{item.description}</span>
+                <span className="text-white font-medium text-xl">{item.amount}</span>
+                <span className="text-white/50 text-sm">{item.description}</span>
               </div>
             </div>
           ))}
