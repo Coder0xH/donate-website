@@ -260,7 +260,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                Web3 公益创新平台
+                Web3 捐赠公益平台
               </motion.span>
             </motion.div>
             

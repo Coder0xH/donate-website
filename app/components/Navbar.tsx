@@ -25,6 +25,7 @@ export default function Navbar() {
     { href: '/', label: 'Home' },
     { href: '/donate', label: 'Donate' },
     { href: '/projects', label: 'Projects' },
+    { href: '/contact', label: 'Contact' },
   ]
 
   return (
