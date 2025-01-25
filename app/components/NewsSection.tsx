@@ -57,16 +57,16 @@ export default function NewsSection() {
           whileInView="show"
           viewport={{ once: true }}
         >
-          {news.map((item) => (
+          {news.map((newsItem) => (
             <motion.div
-              key={item.id}
+              key={newsItem.id}
               className="bg-white dark:bg-dark-100 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
               variants={item}
             >
               <div className="p-6">
-                <div className="text-sm text-primary-500 mb-2">{item.date}</div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{item.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{item.content}</p>
+                <div className="text-sm text-primary-500 mb-2">{newsItem.date}</div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{newsItem.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{newsItem.content}</p>
                 <motion.button
                   className="mt-4 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                   whileHover={{ x: 5 }}
