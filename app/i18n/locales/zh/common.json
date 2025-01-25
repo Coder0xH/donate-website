@@ -10,6 +10,252 @@
     "subtitle": "透明追踪",
     "description": "透明捐赠，区块链见证每份爱，通过区块链技术，让每一笔捐赠都清晰可见。",
     "donate": "立即捐赠",
-    "learnMore": "了解项目"
+    "learnMore": "了解项目",
+    "platform": "Web3 捐赠公益平台",
+    "stats": {
+      "raised": "已募集",
+      "for": "用于四川理塘希漫教育中心"
+    }
+  },
+  "features": {
+    "title": "为什么选择我们？",
+    "subtitle": "区块链技术保证捐赠全程透明，让爱心直达需要的地方",
+    "instant": {
+      "title": "极速到账",
+      "description": "基于 Solana 的高性能区块链，捐赠资金秒级到账，让帮助不再等待。"
+    },
+    "tracking": {
+      "title": "全程追踪",
+      "description": "区块链技术确保每一笔捐赠都可追踪，资金流向清晰透明。"
+    },
+    "multichain": {
+      "title": "多链支持",
+      "description": "支持ETH、BTC、SOL等多链捐赠，让爱心不受限制。"
+    }
+  },
+  "stats": {
+    "title": "实时捐赠追踪",
+    "totalDonation": {
+      "title": "累计捐赠：￥2,100,000",
+      "target": "目标金额：￥5,000,000",
+      "details": "捐赠金额明细",
+      "items": {
+        "building": "教学楼建设项目",
+        "library": "图书馆设备采购",
+        "training": "教师培训项目"
+      }
+    },
+    "beneficiaries": {
+      "title": "受益学生",
+      "target": "目标人数：200名",
+      "details": "受益学生统计",
+      "quarters": {
+        "q1_2024": "2024年第一季度",
+        "q4_2023": "2023年第四季度",
+        "q3_2023": "2023年第三季度"
+      }
+    },
+    "executionRate": {
+      "title": "捐赠执行率",
+      "details": "捐赠执行情况",
+      "items": {
+        "building": "教学楼搭建项目",
+        "library": "图书馆设备采购",
+        "training": "教师培训项目"
+      }
+    }
+  },
+  "updates": {
+    "title": "最新捐赠动态",
+    "subtitle": "实时展示最新的捐赠流向，确保每一笔捐赠都用于实处",
+    "donate": "我要捐赠",
+    "sending": "发送至",
+    "transferring": "✓ 正在进行转账到四川理塘希漫教育中心",
+    "progress": {
+      "title": "最新项目进展",
+      "items": {
+        "building": "完成四川理塘希漫教育中心建设",
+        "equipment": "采购教学设备100多台",
+        "training": "完成2024年第一季度教师培训"
+      },
+      "viewMore": "查看更多进展"
+    }
+  },
+  "partners": {
+    "title": "合作伙伴",
+    "subtitle": "我们与众多知名机构合作，共同推动公益事业"
+  },
+  "angels": {
+    "title": "希漫小天使"
+  },
+  "status": {
+    "completed": "已完成",
+    "inProgress": "进行中"
+  },
+  "statCard": {
+    "donation": {
+      "title": "捐赠金额",
+      "details": "捐赠明细"
+    },
+    "students": {
+      "title": "受益学生",
+      "details": "学生明细"
+    },
+    "execution": {
+      "title": "执行进度",
+      "details": "执行明细"
+    }
+  },
+  "projects": {
+    "pageTitle": "项目展示",
+    "title": {
+      "main": "希漫公益",
+      "sub": "项目追踪"
+    },
+    "schoolConstruction": {
+      "title": "四川理塘希漫教育中心建设",
+      "description": "为四川理塘希漫教育中心建设现代化小学，提供优质教育资源。通过区块链技术，每一笔建设资金都可追踪、可验证。",
+      "stats": {
+        "donated": {
+          "value": "￥210万",
+          "label": "已募集"
+        },
+        "progress": {
+          "value": "75%",
+          "label": "完成度"
+        },
+        "students": {
+          "value": "200+",
+          "label": "受益学生"
+        }
+      }
+    },
+    "equipmentSetup": {
+      "title": "教学设备配置",
+      "description": "配备现代化教学设备和丰富的图书资源，让每个孩子都能享受到优质的教育资源。",
+      "stats": {
+        "devices": {
+          "value": "100+",
+          "label": "设备数量"
+        },
+        "books": {
+          "value": "1000+",
+          "label": "图书数量"
+        },
+        "coverage": {
+          "value": "3所",
+          "label": "覆盖学校"
+        }
+      }
+    },
+    "teacherTraining": {
+      "title": "教师培训计划",
+      "description": "为当地教师提供专业培训和发展机会，提升教育质量，培养更多优秀教师。",
+      "stats": {
+        "teachers": {
+          "value": "50+",
+          "label": "培训教师"
+        },
+        "courses": {
+          "value": "12门",
+          "label": "课程数量"
+        },
+        "hours": {
+          "value": "360h",
+          "label": "培训时长"
+        }
+      }
+    },
+    "buildingProgress": {
+      "title": "建设进度",
+      "steps": {
+        "planning": {
+          "status": "完成",
+          "text": "选址和规划设计"
+        },
+        "infrastructure": {
+          "status": "完成",
+          "text": "基础设施建设"
+        },
+        "mainBuilding": {
+          "status": "完成",
+          "text": "教学楼主体工程"
+        },
+        "interior": {
+          "status": "进行中",
+          "text": "内部装修和设备安装"
+        }
+      }
+    }
+  },
+  "donate": {
+    "platform": "Web3 捐赠平台",
+    "title": {
+      "main": "希漫公益",
+      "sub": "让爱心永恒"
+    },
+    "description": "通过区块链技术，让每一份善意都透明可追溯，共同构建更美好的未来",
+    "copyButton": "复制地址",
+    "copySuccess": "地址已复制到剪贴板",
+    "sections": {
+      "crypto": {
+        "title": "链上捐赠"
+      },
+      "physical": {
+        "title": "实物捐赠",
+        "items": {
+          "books": {
+            "title": "图书捐赠",
+            "description": "需要各类教育类图书，特别是科学、数学和文学类书籍",
+            "requirements": [
+              "适合6-15岁年龄段",
+              "品相完好",
+              "无污损"
+            ]
+          },
+          "devices": {
+            "title": "电子设备",
+            "description": "平板电脑、笔记本电脑等教学设备",
+            "requirements": [
+              "可正常使用",
+              "配套充电器",
+              "已清除个人数据"
+            ]
+          },
+          "supplies": {
+            "title": "学习用品",
+            "description": "文具、书包、学习工具等",
+            "requirements": [
+              "全新未拆封",
+              "适合学生使用",
+              "符合安全标准"
+            ]
+          },
+          "simanangels": {
+            "title": "SIMANANGELS FOUNDER SIMAN",
+            "description": "希漫天使是一个创新的Web3公益平台，致力于通过区块链技术和现代捐赠方式，帮助全球贫困地区的孩子们改善教育、生活条件和未来机会。",
+            "requirements": [
+              "连接全球捐赠者与需要帮助的群体",
+              "通过空投和加密货币进行捐赠",
+              "提供物品捐赠渠道",
+              "为贫困地区儿童提供教育支持"
+            ]
+          }
+        },
+        "address": {
+          "title": "实物捐赠地址",
+          "content": "广东省深圳市南山区西丽街道沙河西路3019号希漫天使基金会",
+          "contact": {
+            "name": "姓名：洛绒降央",
+            "phone": "电话号码：13408447175"
+          },
+          "workingHours": "工作时间：周一至周五 9:00-17:00"
+        }
+      }
+    },
+    "learnMore": {
+      "text": "了解我们的影响力",
+      "link": "/impact"
+    }
   }
 } 

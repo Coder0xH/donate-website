@@ -1,18 +1,26 @@
 'use client';
 
 import LogoWall from '@/components/ui/LogoWall/LogoWall';
+import { useTranslation } from '@/app/i18n/client';
 
-export default function Partners() {
+export default function Partners({ lng }: { lng: string }) {
+  const { t } = useTranslation(lng, 'common');
+  
   const partners = [
     { imgUrl: '/collab/catcher.png', altText: "Catcher Logo" },
     { imgUrl: '/collab/ctaiks.png', altText: "CTAIKS Logo" },
-    { imgUrl: '/collab/loyal.png', altText: "Loyal Logo" },
     { imgUrl: '/collab/metaera.png', altText: "Metaera Logo" },
     { imgUrl: '/collab/odaily.png', altText: "Odaily Logo" },
     { imgUrl: '/collab/plume.jpg', altText: "Plume Logo" },
     { imgUrl: '/collab/simandao.png', altText: "Simandao Logo" },
     { imgUrl: '/collab/startoken.jpg', altText: "Startoken Logo" },
     { imgUrl: '/collab/suplayer.png', altText: "Suplayer Logo" },
+    { imgUrl: '/collab/cillab1.png', altText: "Xian Logo" },
+    { imgUrl: '/collab/cillab2.png', altText: "Xian Logo" },
+    { imgUrl: '/collab/cillab3.png', altText: "Xian Logo" },
+    { imgUrl: '/collab/cillab4.png', altText: "Xian Logo" },
+    { imgUrl: '/collab/cillab5.png', altText: "Xian Logo" },
+    { imgUrl: '/collab/cillab6.png', altText: "Xian Logo" },
   ];
   
   return (
@@ -21,9 +29,9 @@ export default function Partners() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent inline-block">
-            合作伙伴
+            {t('partners.title')}
           </h2>
-          <p className="mt-4 text-zinc-400">我们与众多知名机构合作，共同推动公益事业</p>
+          <p className="mt-4 text-zinc-400">{t('partners.subtitle')}</p>
         </div>
 
         <div className="relative w-full max-w-5xl mx-auto">

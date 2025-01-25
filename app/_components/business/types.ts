@@ -6,6 +6,7 @@ export interface StatCardProps {
   value: string;
   color?: string;
   endTime?: string | null;
+  lng: string;
   details?: {
     title: string;
     items: {

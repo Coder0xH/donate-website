@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { StatCardProps } from './types';
 import { motion } from 'framer-motion';
 import Modal from '@/components/ui/Modal';
+import { useTranslation } from '@/app/i18n/client';
 
 const StatCard: React.FC<StatCardProps> = ({ 
   icon: Icon, 
@@ -11,9 +12,19 @@ const StatCard: React.FC<StatCardProps> = ({
   title, 
   color, 
   details,
-  endTime
+  endTime,
+  lng
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation(lng, 'common');
+
+  const getCardType = () => {
+    if (title.includes(t('statCard.donation.title'))) return 'donation';
+    if (title.includes(t('statCard.students.title'))) return 'students';
+    return 'execution';
+  };
+
+  const cardType = getCardType();
 
   return (
     <>
@@ -25,8 +36,8 @@ const StatCard: React.FC<StatCardProps> = ({
       >
         {/* 外层光晕效果 */}
         <div className={`absolute -inset-0.5 opacity-75 group-hover:opacity-100 transition duration-500 rounded-2xl ${
-          title.includes('捐赠') ? 'bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20' :
-          title.includes('学生') ? 'bg-gradient-to-r from-green-500/20 via-teal-500/20 to-blue-500/20' :
+          cardType === 'donation' ? 'bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20' :
+          cardType === 'students' ? 'bg-gradient-to-r from-green-500/20 via-teal-500/20 to-blue-500/20' :
           'bg-gradient-to-r from-orange-500/20 via-red-500/20 to-purple-500/20'
         } blur-lg`} />
         
@@ -50,11 +61,11 @@ const StatCard: React.FC<StatCardProps> = ({
           <div className="relative flex flex-col items-center text-center">
             {/* Icon with gradient */}
             <div className={`w-12 h-12 mb-4 rounded-full flex items-center justify-center ${
-              title.includes('捐赠') ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20' :
-              title.includes('学生') ? 'bg-gradient-to-br from-green-500/20 to-blue-500/20' :
+              cardType === 'donation' ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20' :
+              cardType === 'students' ? 'bg-gradient-to-br from-green-500/20 to-blue-500/20' :
               'bg-gradient-to-br from-orange-500/20 to-red-500/20'
             }`}>
-              {title.includes('捐赠金额') ? (
+              {cardType === 'donation' ? (
                 <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -74,8 +85,8 @@ const StatCard: React.FC<StatCardProps> = ({
               }}
             >
               <h3 className={`text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${
-                title.includes('捐赠') ? 'from-blue-400 via-purple-400 to-pink-400' :
-                title.includes('学生') ? 'from-green-400 via-teal-400 to-blue-400' :
+                cardType === 'donation' ? 'from-blue-400 via-purple-400 to-pink-400' :
+                cardType === 'students' ? 'from-green-400 via-teal-400 to-blue-400' :
                 'from-orange-400 via-red-400 to-purple-400'
               }`}>
                 {value}
@@ -84,7 +95,7 @@ const StatCard: React.FC<StatCardProps> = ({
 
             {/* Title with shimmer effect */}
             <div className="relative mt-2">
-              <p className="text-white/60">{title}</p>
+              <p className="text-white/60">{t(`statCard.${cardType}.title`)}</p>
               <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
             </div>
           </div>
@@ -95,7 +106,7 @@ const StatCard: React.FC<StatCardProps> = ({
         <Modal
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          title={details.title}
+          title={t(`statCard.${cardType}.details`)}
           color={color}
           endTime={endTime}
         >
@@ -108,8 +119,8 @@ const StatCard: React.FC<StatCardProps> = ({
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-white/60 text-sm">{item.date}</span>
                   <span className={`px-3 py-1 rounded-full text-xs ${
-                    item.status === '已完成' ? 'bg-green-500/20 text-green-400' :
-                    item.status === '进行中' ? 'bg-blue-500/20 text-blue-400' :
+                    item.status === t('status.completed') ? 'bg-green-500/20 text-green-400' :
+                    item.status === t('status.inProgress') ? 'bg-blue-500/20 text-blue-400' :
                     'bg-gray-500/20 text-gray-400'
                   }`}>
                     {item.status}

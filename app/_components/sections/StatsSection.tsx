@@ -4,8 +4,11 @@ import { motion } from 'framer-motion';
 import { FaEthereum, FaHeart } from 'react-icons/fa';
 import { SiSolana } from 'react-icons/si';
 import StatCard from '@/app/_components/business/StatCard';
+import { useTranslation } from '@/app/i18n/client';
 
-export default function StatsSection() {
+export default function StatsSection({ lng }: { lng: string }) {
+  const { t } = useTranslation(lng, 'common');
+
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent" />
@@ -19,7 +22,7 @@ export default function StatsSection() {
           >
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-green-400">实时捐赠追踪</span>
+              <span className="text-green-400">{t('stats.title')}</span>
             </div>
           </motion.div>
         </div>
@@ -28,30 +31,30 @@ export default function StatsSection() {
           <StatCard
             icon={FaEthereum}
             value="￥5,000,000"
-            title="累计捐赠:￥2,100,000"
+            title={t('stats.totalDonation.title')}
             color="bg-blue-500"
-            endTime="2024-06-30"
+            endTime={t('stats.totalDonation.target')}
+            lng={lng}
             details={{
-              title: "捐赠金额明细",
-             
+              title: t('stats.totalDonation.details'),
               items: [
                 {
                   date: "2024-01-20",
                   amount: "2,100,000 ￥",
-                  description: "教学楼建设项目",
-                  status: "已完成"
+                  description: t('stats.totalDonation.items.building'),
+                  status: t('status.completed')
                 },
                 {
                   date: "2024-01-20 --- 2024-06-30",
                   amount: "2,900,000 ￥",
-                  description: "图书馆设备采购",
-                  status: "进行中"
+                  description: t('stats.totalDonation.items.library'),
+                  status: t('status.inProgress')
                 },
                 {
                   date: "2024-01-20 --- 2024-06-30",
                   amount: "5,000 ￥",
-                  description: "教师培训项目",
-                  status: "进行中"
+                  description: t('stats.totalDonation.items.training'),
+                  status: t('status.inProgress')
                 }
               ]
             }}
@@ -59,29 +62,27 @@ export default function StatsSection() {
           <StatCard
             icon={FaHeart}
             value="200+"
-            title="受益学生"
+            title={t('stats.beneficiaries.title')}
             color="bg-rose-500"
-            endTime="目标人数：200名"
+            endTime={t('stats.beneficiaries.target')}
+            lng={lng}
             details={{
-              title: "受益学生统计",
+              title: t('stats.beneficiaries.details'),
               items: [
                 {
-                  date: "2024年第一季度",
+                  date: t('stats.beneficiaries.quarters.q1_2024'),
                   amount: "15+ 名",
-                  // description: "小学部学生",
-                  status: "进行中"
+                  status: t('status.inProgress')
                 },
                 {
-                  date: "2023年第四季度",
+                  date: t('stats.beneficiaries.quarters.q4_2023'),
                   amount: "10 名",
-                  // description: "初中部学生",
-                  status: "已完成"
+                  status: t('status.completed')
                 },
                 {
-                  date: "2023年第三季度",
+                  date: t('stats.beneficiaries.quarters.q3_2023'),
                   amount: "5 名",
-                  // description: "高中部学生",
-                  status: "已完成"
+                  status: t('status.completed')
                 }
               ]
             }}
@@ -89,29 +90,30 @@ export default function StatsSection() {
           <StatCard
             icon={SiSolana}
             value="100%"
-            title="捐赠执行率"
+            title={t('stats.executionRate.title')}
             color="bg-teal-500"
             endTime={null}
+            lng={lng}
             details={{
-              title: "捐赠执行情况",
+              title: t('stats.executionRate.details'),
               items: [
                 {
                   date: "2024-01-20",
                   amount: "100%",
-                  description: "教学楼搭建项目",
-                  status: "已完成"
+                  description: t('stats.executionRate.items.building'),
+                  status: t('status.completed')
                 },
                 {
                   date: "2024-01-15",
                   amount: "100%",
-                  description: "图书馆设备采购",
-                  status: "已完成"
+                  description: t('stats.executionRate.items.library'),
+                  status: t('status.completed')
                 },
                 {
                   date: "2024-01-10",
                   amount: "100%",
-                  description: "教师培训项目",
-                  status: "已完成"
+                  description: t('stats.executionRate.items.training'),
+                  status: t('status.completed')
                 }
               ]
             }}

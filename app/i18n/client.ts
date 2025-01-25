@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import i18next from 'i18next'
-import { initReactI18next, useTranslation as useTranslationOrg } from 'react-i18next'
+import { initReactI18next, useTranslation as useTranslationOrg, UseTranslationOptions } from 'react-i18next'
 import resourcesToBackend from 'i18next-resources-to-backend'
 import { getOptions } from './settings'
 
@@ -12,14 +12,22 @@ i18next
     import(`./locales/${language}/${namespace}.json`)))
   .init(getOptions())
 
-export function useTranslation(lng: string, ns?: string, options: any = {}) {
+ 
+export function useTranslation(lng: string, ns?: string, options: UseTranslationOptions<undefined> = {}) {
   const ret = useTranslationOrg(ns, options)
   const { i18n } = ret
 
   useEffect(() => {
     if (i18n.resolvedLanguage === lng) return
-    i18n.changeLanguage(lng)
+    i18n.changeLanguage(lng).catch(() => {})
   }, [lng, i18n])
+
+  // 强制重新渲染以确保语言切换立即生效
+  useEffect(() => {
+    if (i18n.resolvedLanguage !== lng) {
+      i18n.reloadResources(lng, ns).catch(() => {})
+    }
+  }, [lng, ns, i18n])
 
   return ret
 } 

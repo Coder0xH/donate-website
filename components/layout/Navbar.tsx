@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FaBitcoin, FaEthereum, FaRocket, FaTelegram } from 'react-icons/fa'
 import { SiSolana } from 'react-icons/si'
 import { HiLightningBolt } from 'react-icons/hi'
+import { RiMenu4Line } from 'react-icons/ri'
+import { IoClose } from 'react-icons/io5'
 import Image from 'next/image'
 import { BsTwitterX } from "react-icons/bs"
 import { useTranslation } from '@/app/i18n/client'
@@ -14,6 +16,7 @@ import LanguageSwitcher from '../ui/LanguageSwitcher'
 
 export default function Navbar({ lng }: { lng: string }) {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
   const { t } = useTranslation(lng, 'common')
 
@@ -26,11 +29,15 @@ export default function Navbar({ lng }: { lng: string }) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // 关闭菜单当路由改变时
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [pathname])
+
   const navItems = [
     { href: '/', label: t('nav.home') },
     { href: '/donate', label: t('nav.donate') },
     { href: '/projects', label: t('nav.projects') },
-    { href: '/about', label: t('nav.about') },
   ]
 
   return (
@@ -43,11 +50,17 @@ export default function Navbar({ lng }: { lng: string }) {
       <div className="max-w-2xl w-full mx-auto">
         <motion.div
           layout
-          className={`rounded-2xl transition-all duration-500 relative ${isScrolled
+          className={`rounded-2xl transition-all duration-500 relative ${
+            isScrolled
               ? 'bg-gradient-to-r from-black/95 via-blue-950/95 to-black/95 backdrop-blur-md shadow-lg'
               : 'bg-gradient-to-r from-black/90 to-blue-950/90 backdrop-blur-md'
-            }`}
+          }`}
         >
+          {/* PC端语言切换器 */}
+          <div className="absolute -right-14 top-2 hidden md:block">
+            <LanguageSwitcher lng={lng} />
+          </div>
+
           {/* 温暖的光晕边框效果 */}
           <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-rose-400/20 via-teal-400/20 to-blue-500/20 blur-sm" />
           <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-rose-300/10 via-amber-300/10 to-teal-300/10" />
@@ -68,15 +81,16 @@ export default function Navbar({ lng }: { lng: string }) {
 
           {/* 内容容器 */}
           <div className="relative h-14 px-4 flex items-center justify-between bg-gradient-to-b from-transparent to-black/30 rounded-2xl">
-            {/* 左侧 Solana 图标组 */}
+            {/* 左侧 Logo */}
             <div className="flex items-center space-x-2 w-[88px]">
               <Image src="/logos/head-logo.png" alt="Solana" width={32} height={32} />
-              <div className="bg-gradient-to-r from-sky-400  to-teal-400 bg-clip-text text-transparent font-bold">
+              <div className="bg-gradient-to-r from-sky-400 to-teal-400 bg-clip-text text-transparent font-bold">
                 <span>Siman</span><span>Angels</span>
               </div>
             </div>
 
-            <div className="flex items-center space-x-6">
+            {/* 中间导航链接 - 桌面端 */}
+            <div className="hidden md:flex items-center space-x-6">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -102,10 +116,11 @@ export default function Navbar({ lng }: { lng: string }) {
                     </AnimatePresence>
                     <motion.div
                       layout
-                      className={`relative z-10 text-sm font-medium transition-colors duration-300 ${pathname === item.href
+                      className={`relative z-10 text-sm font-medium transition-colors duration-300 ${
+                        pathname === item.href
                           ? 'bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent drop-shadow-[0_0_3px_rgba(59,130,246,0.3)]'
                           : 'text-gray-300 group-hover:text-blue-400'
-                        }`}
+                      }`}
                     >
                       {item.label}
                     </motion.div>
@@ -120,30 +135,50 @@ export default function Navbar({ lng }: { lng: string }) {
               ))}
             </div>
 
-            <div className="flex items-center gap-6 w-[88px] justify-end">
-              <div className="flex items-center gap-3">
-              <motion.a
-                href="https://x.com/simanangels"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                className="text-white "
-              >
-                <BsTwitterX className="w-5 h-5" />
-              </motion.a>
-
-              <motion.a
-                href="https://t.me/+Xxeq64h-z6diY2M1"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                className="text-white  transition-colors"
-              >
-                <FaTelegram className="w-5 h-5" />
-              </motion.a>
+            {/* 右侧图标组 */}
+            <div className="flex items-center gap-3 md:gap-6 w-[88px] justify-end">
+              {/* 移动端语言切换器 */}
+              <div className="block md:hidden">
+                <LanguageSwitcher lng={lng} />
               </div>
 
-              <div className="flex items-center space-x-3 w-[88px] justify-end">
+              {/* 移动端菜单按钮 */}
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-1 text-white md:hidden"
+              >
+                {isMenuOpen ? (
+                  <IoClose className="w-6 h-6" />
+                ) : (
+                  <RiMenu4Line className="w-6 h-6" />
+                )}
+              </button>
+
+              {/* 社交媒体图标 */}
+              <div className="hidden md:flex items-center gap-3">
+                <motion.a
+                  href="https://x.com/simanangels"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  className="text-white"
+                >
+                  <BsTwitterX className="w-5 h-5" />
+                </motion.a>
+
+                <motion.a
+                  href="https://t.me/+Xxeq64h-z6diY2M1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  className="text-white transition-colors"
+                >
+                  <FaTelegram className="w-5 h-5" />
+                </motion.a>
+              </div>
+
+              {/* 加密货币图标组 */}
+              <div className="hidden md:flex items-center space-x-3">
                 <motion.div
                   whileHover={{ rotate: 180, scale: 1.1 }}
                   transition={{ duration: 0.3 }}
@@ -234,13 +269,68 @@ export default function Navbar({ lng }: { lng: string }) {
                 </motion.div>
               </div>
             </div>
-            
           </div>
-          
+
+          {/* 移动端菜单 */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-full left-0 right-0 mt-2 bg-gradient-to-b from-black/95 to-blue-950/95 backdrop-blur-md rounded-xl overflow-hidden"
+              >
+                <div className="p-4 space-y-4">
+                  {/* 导航链接 */}
+                  <div className="space-y-2">
+                    {navItems.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={`/${lng}${item.href}`}
+                        className="block"
+                      >
+                        <motion.div
+                          whileHover={{ x: 10 }}
+                          className={`px-4 py-2 rounded-lg ${
+                            pathname === item.href
+                              ? 'bg-gradient-to-r from-blue-500/20 to-teal-400/10 text-blue-400'
+                              : 'text-gray-300'
+                          }`}
+                        >
+                          {item.label}
+                        </motion.div>
+                      </Link>
+                    ))}
+                  </div>
+
+                  {/* 社交媒体链接 */}
+                  <div className="flex items-center gap-4 px-4 py-2">
+                    <motion.a
+                      href="https://x.com/simanangels"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1 }}
+                      className="text-white"
+                    >
+                      <BsTwitterX className="w-5 h-5" />
+                    </motion.a>
+                    <motion.a
+                      href="https://t.me/+Xxeq64h-z6diY2M1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1 }}
+                      className="text-white"
+                    >
+                      <FaTelegram className="w-5 h-5" />
+                    </motion.a>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
-       
       </div>
-      <LanguageSwitcher lng={lng} />
     </motion.nav>
   )
 }

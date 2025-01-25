@@ -18,17 +18,21 @@ export const metadata: Metadata = {
   description: "通过区块链技术实现透明公益，帮助更多需要帮助的人。",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lng: string }>;
 }>) {
+    const resolvedParams = await params;
+    const { lng } = resolvedParams;
   return (
-    <html lang="zh">
+    <html lang={lng}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-black min-h-screen`}
       >
-        <Navbar />
+        <Navbar lng={lng} />
         {children}
       </body>
     </html>

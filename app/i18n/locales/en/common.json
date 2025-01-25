@@ -2,7 +2,7 @@
   "nav": {
     "home": "Home",
     "donate": "Donate",
-    "projects": "Projects", 
+    "projects": "Projects",
     "about": "About"
   },
   "hero": {
@@ -10,6 +10,266 @@
     "subtitle": "Transparent Tracking",
     "description": "Transparent donations, blockchain witnesses every love, through blockchain technology, making every donation visible.",
     "donate": "Donate Now",
-    "learnMore": "Learn More"
+    "learnMore": "Learn More",
+    "platform": "Web3 Charity Platform",
+    "stats": {
+      "raised": "Raised",
+      "for": "for Siman Education Center in Litang, Sichuan"
+    }
+  },
+  "features": {
+    "title": "Why Choose Us?",
+    "subtitle": "Blockchain technology ensures transparency throughout the donation process, ensuring love reaches where it's needed",
+    "instant": {
+      "title": "Instant Transfer",
+      "description": "Based on Solana's high-performance blockchain, donation funds arrive instantly, ensuring help arrives without delay."
+    },
+    "tracking": {
+      "title": "Full Tracking",
+      "description": "Blockchain technology ensures every donation is traceable, with transparent fund flows."
+    },
+    "multichain": {
+      "title": "Multi-Chain Support",
+      "description": "Support for ETH, BTC, SOL and other multi-chain donations, making love unlimited."
+    }
+  },
+  "stats": {
+    "title": "Real-time Donation Tracking",
+    "totalDonation": {
+      "title": "Total Donation: ¥2,100,000",
+      "target": "Target: ¥5,000,000",
+      "details": "Donation Details",
+      "items": {
+        "building": "Teaching Building Construction",
+        "library": "Library Equipment Procurement",
+        "training": "Teacher Training Program"
+      }
+    },
+    "beneficiaries": {
+      "title": "Beneficiary Students",
+      "target": "Target: 200 students",
+      "details": "Student Statistics",
+      "quarters": {
+        "q1_2024": "2024 Q1",
+        "q4_2023": "2023 Q4",
+        "q3_2023": "2023 Q3"
+      }
+    },
+    "executionRate": {
+      "title": "Donation Execution Rate",
+      "details": "Donation Execution Status",
+      "items": {
+        "building": "Teaching Building Project",
+        "library": "Library Equipment",
+        "training": "Teacher Training"
+      }
+    }
+  },
+  "updates": {
+    "title": "Latest Donation Updates",
+    "subtitle": "Real-time display of latest donation flows, ensuring every donation is put to good use",
+    "donate": "Donate",
+    "sending": "Sending to",
+    "transferring": "✓ Transferring to Siman Education Center in Litang, Sichuan",
+    "progress": {
+      "title": "Latest Project Progress",
+      "items": {
+        "building": "Completed Siman Education Center construction in Litang, Sichuan",
+        "equipment": "Procured over 100 teaching equipment",
+        "training": "Completed Q1 2024 teacher training"
+      },
+      "viewMore": "View More Progress"
+    }
+  },
+  "partners": {
+    "title": "Partners",
+    "subtitle": "We collaborate with many renowned institutions to promote charitable causes"
+  },
+  "angels": {
+    "title": "Siman Angels"
+  },
+  "status": {
+    "completed": "Completed",
+    "inProgress": "In Progress"
+  },
+  "statCard": {
+    "donation": {
+      "title": "Donation Amount",
+      "details": "Donation Details"
+    },
+    "students": {
+      "title": "Beneficiary Students",
+      "details": "Student Details"
+    },
+    "execution": {
+      "title": "Execution Progress",
+      "details": "Execution Details"
+    }
+  },
+  "projects": {
+    "pageTitle": "Projects",
+    "title": {
+      "main": "Siman Charity",
+      "sub": "Project Tracking"
+    },
+    "schoolConstruction": {
+      "title": "Siman Education Center Construction in Litang, Sichuan",
+      "description": "Building a modern primary school for Siman Education Center in Litang, Sichuan, providing quality educational resources. Through blockchain technology, every construction fund can be tracked and verified.",
+      "stats": {
+        "donated": {
+          "value": "¥2.1M",
+          "label": "Raised"
+        },
+        "progress": {
+          "value": "75%",
+          "label": "Progress"
+        },
+        "students": {
+          "value": "200+",
+          "label": "Beneficiaries"
+        }
+      }
+    },
+    "equipmentSetup": {
+      "title": "Teaching Equipment Setup",
+      "description": "Equipping with modern teaching equipment and rich library resources, allowing every child to enjoy quality educational resources.",
+      "stats": {
+        "devices": {
+          "value": "100+",
+          "label": "Devices"
+        },
+        "books": {
+          "value": "1000+",
+          "label": "Books"
+        },
+        "coverage": {
+          "value": "3",
+          "label": "Schools"
+        }
+      }
+    },
+    "teacherTraining": {
+      "title": "Teacher Training Program",
+      "description": "Providing professional training and development opportunities for local teachers to improve education quality and cultivate more excellent teachers.",
+      "stats": {
+        "teachers": {
+          "value": "50+",
+          "label": "Teachers"
+        },
+        "courses": {
+          "value": "12",
+          "label": "Courses"
+        },
+        "hours": {
+          "value": "360h",
+          "label": "Hours"
+        }
+      }
+    },
+    "buildingProgress": {
+      "title": "Construction Progress",
+      "steps": {
+        "planning": {
+          "status": "Completed",
+          "text": "Site Selection and Planning"
+        },
+        "infrastructure": {
+          "status": "Completed",
+          "text": "Infrastructure Construction"
+        },
+        "mainBuilding": {
+          "status": "Completed",
+          "text": "Main Building Construction"
+        },
+        "interior": {
+          "status": "In Progress",
+          "text": "Interior Decoration and Equipment Installation"
+        }
+      }
+    }
+  },
+  "donate": {
+    "platform": "Web3 Donation Platform",
+    "title": {
+      "main": "Siman Charity",
+      "sub": "Making Love Eternal"
+    },
+    "description": "Through blockchain technology, making every act of kindness transparent and traceable, building a better future together",
+    "copyButton": "Copy Address",
+    "copySuccess": "Address copied to clipboard",
+    "sections": {
+      "crypto": {
+        "title": "Crypto Donation"
+      },
+      "physical": {
+        "title": "Physical Donation",
+        "items": {
+          "books": {
+            "title": "Book Donation",
+            "description": "Need various educational books, especially in science, mathematics, and literature",
+            "requirements": [
+              "Suitable for ages 6-15",
+              "Good condition",
+              "No damage"
+            ]
+          },
+          "devices": {
+            "title": "Electronic Devices",
+            "description": "Tablets, laptops, and other teaching equipment",
+            "requirements": [
+              "Fully functional",
+              "Include chargers",
+              "Personal data cleared"
+            ]
+          },
+          "supplies": {
+            "title": "Learning Supplies",
+            "description": "Stationery, schoolbags, learning tools, etc.",
+            "requirements": [
+              "Brand new and sealed",
+              "Suitable for students",
+              "Meet safety standards"
+            ]
+          },
+          "simanangels": {
+            "title": "SIMANANGELS FOUNDER SIMAN",
+            "description": "SimanAngels is an innovative Web3 charity platform dedicated to helping children in impoverished areas worldwide improve their education, living conditions, and future opportunities through blockchain technology and modern donation methods.",
+            "requirements": [
+              "Connecting global donors with those in need",
+              "Donations through airdrops and cryptocurrencies",
+              "Providing channels for physical donations",
+              "Educational support for children in impoverished areas"
+            ]
+          },
+          "other": {
+            "title": "Other Donation",
+            "description": "If you have any other ideas or suggestions, please contact us",
+            "requirements": [
+              "Any ideas or suggestions"
+            ]
+          },
+          "or": {
+            "title": "Or",
+            "description": "If you have any other ideas or suggestions, please contact us",
+            "requirements": [
+              "Any ideas or suggestions"
+            ]
+          }
+        },
+        "address": {
+          "title": "Physical Donation Address",
+          "content": "Siman Angel Foundation, 3019 Shahe West Road, Xili Street, Nanshan District, Shenzhen, Guangdong Province",
+          "contact": {
+            "name": "Name: Luorong Jiangyang",
+            "phone": "Phone: 13408447175"
+          },
+          "workingHours": "Working Hours: Monday to Friday 9:00-17:00"
+        }
+      }
+    },
+    "learnMore": {
+      "text": "Learn About Our Impact",
+      "link": "/impact"
+    }
   }
 } 

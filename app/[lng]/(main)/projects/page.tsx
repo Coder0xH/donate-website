@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaSchool, FaBookReader, FaChalkboardTeacher } from 'react-icons/fa';
 import { IconType } from 'react-icons';
+import { useTranslation } from '@/app/i18n/client';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -24,7 +25,11 @@ interface Project {
   stats: ProjectStat[];
 }
 
-const ProjectCard = ({ title, description, icon: Icon, stats }: Omit<Project, 'id'>) => (
+interface ProjectCardProps extends Omit<Project, 'id'> {
+  lng: string;
+}
+
+const ProjectCard = ({ title, description, icon: Icon, stats }: ProjectCardProps) => (
   <motion.div 
     variants={fadeInUp}
     whileHover={{ y: -5 }}
@@ -54,48 +59,105 @@ const ProjectCard = ({ title, description, icon: Icon, stats }: Omit<Project, 'i
   </motion.div>
 );
 
-export default function ProjectsPage() {
+
+
+export default  function ProjectsPage({ params }: { params: Promise<{ lng: string }> }) {
+  const { lng } = React.use(params);
+  const { t } = useTranslation(lng, 'common');
+
   const projects: Project[] = [
     {
       id: "school-construction",
-      title: "四川理塘希漫教育中心建设",
-      description: "为四川理塘希漫教育中心建设现代化小学，提供优质教育资源。通过区块链技术，每一笔建设资金都可追踪、可验证。",
+      title: t('projects.schoolConstruction.title'),
+      description: t('projects.schoolConstruction.description'),
       icon: FaSchool,
       stats: [
-        { id: 'donated', value: '￥210万', label: '已募集' },
-        { id: 'progress', value: '75%', label: '完成度' },
-        { id: 'students', value: '200+', label: '受益学生' }
+        { 
+          id: 'donated', 
+          value: t('projects.schoolConstruction.stats.donated.value'), 
+          label: t('projects.schoolConstruction.stats.donated.label')
+        },
+        { 
+          id: 'progress', 
+          value: t('projects.schoolConstruction.stats.progress.value'), 
+          label: t('projects.schoolConstruction.stats.progress.label')
+        },
+        { 
+          id: 'students', 
+          value: t('projects.schoolConstruction.stats.students.value'), 
+          label: t('projects.schoolConstruction.stats.students.label')
+        }
       ]
     },
     {
       id: "equipment-setup",
-      title: "教学设备配置",
-      description: "配备现代化教学设备和丰富的图书资源，让每个孩子都能享受到优质的教育资源。",
+      title: t('projects.equipmentSetup.title'),
+      description: t('projects.equipmentSetup.description'),
       icon: FaBookReader,
       stats: [
-        { id: 'devices', value: '100+', label: '设备数量' },
-        { id: 'books', value: '1000+', label: '图书数量' },
-        { id: 'coverage', value: '3所', label: '覆盖学校' }
+        { 
+          id: 'devices', 
+          value: t('projects.equipmentSetup.stats.devices.value'), 
+          label: t('projects.equipmentSetup.stats.devices.label')
+        },
+        { 
+          id: 'books', 
+          value: t('projects.equipmentSetup.stats.books.value'), 
+          label: t('projects.equipmentSetup.stats.books.label')
+        },
+        { 
+          id: 'coverage', 
+          value: t('projects.equipmentSetup.stats.coverage.value'), 
+          label: t('projects.equipmentSetup.stats.coverage.label')
+        }
       ]
     },
     {
       id: "teacher-training",
-      title: "教师培训计划",
-      description: "为当地教师提供专业培训和发展机会，提升教育质量，培养更多优秀教师。",
+      title: t('projects.teacherTraining.title'),
+      description: t('projects.teacherTraining.description'),
       icon: FaChalkboardTeacher,
       stats: [
-        { id: 'teachers', value: '50+', label: '培训教师' },
-        { id: 'courses', value: '12门', label: '课程数量' },
-        { id: 'hours', value: '360h', label: '培训时长' }
+        { 
+          id: 'teachers', 
+          value: t('projects.teacherTraining.stats.teachers.value'), 
+          label: t('projects.teacherTraining.stats.teachers.label')
+        },
+        { 
+          id: 'courses', 
+          value: t('projects.teacherTraining.stats.courses.value'), 
+          label: t('projects.teacherTraining.stats.courses.label')
+        },
+        { 
+          id: 'hours', 
+          value: t('projects.teacherTraining.stats.hours.value'), 
+          label: t('projects.teacherTraining.stats.hours.label')
+        }
       ]
     }
   ];
 
   const buildingSteps = [
-    { id: 'planning', status: "完成", text: "选址和规划设计" },
-    { id: 'infrastructure', status: "完成", text: "基础设施建设" },
-    { id: 'main-building', status: "完成", text: "教学楼主体工程" },
-    { id: 'interior', status: "进行中", text: "内部装修和设备安装" }
+    { 
+      id: 'planning', 
+      status: t('projects.buildingProgress.steps.planning.status'), 
+      text: t('projects.buildingProgress.steps.planning.text')
+    },
+    { 
+      id: 'infrastructure', 
+      status: t('projects.buildingProgress.steps.infrastructure.status'), 
+      text: t('projects.buildingProgress.steps.infrastructure.text')
+    },
+    { 
+      id: 'main-building', 
+      status: t('projects.buildingProgress.steps.mainBuilding.status'), 
+      text: t('projects.buildingProgress.steps.mainBuilding.text')
+    },
+    { 
+      id: 'interior', 
+      status: t('projects.buildingProgress.steps.interior.status'), 
+      text: t('projects.buildingProgress.steps.interior.text')
+    }
   ];
 
   return (
@@ -121,7 +183,7 @@ export default function ProjectsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                项目展示
+                {t('projects.pageTitle')}
               </motion.span>
             </motion.div>
             <motion.h1 
@@ -131,11 +193,11 @@ export default function ProjectsPage() {
               transition={{ delay: 0.3 }}
             >
               <span className="inline-block bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
-                希漫公益
+                {t('projects.title.main')}
               </span>
               <br />
               <span className="inline-block mt-2 text-zinc-300">
-                项目追踪
+                {t('projects.title.sub')}
               </span>
             </motion.h1>
           </motion.div>
@@ -153,7 +215,7 @@ export default function ProjectsPage() {
             animate="visible"
           >
             {projects.map((project) => (
-              <ProjectCard key={project.id} {...project} />
+              <ProjectCard key={project.id} {...project} lng={lng} />
             ))}
           </motion.div>
 
@@ -163,7 +225,9 @@ export default function ProjectsPage() {
             initial="hidden"
             animate="visible"
           >
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent mb-12 text-center">建设进度</h2>
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent mb-12 text-center">
+              {t('projects.buildingProgress.title')}
+            </h2>
             <div className="relative group">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-teal-400 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
               <div className="relative bg-black/90 backdrop-blur-xl rounded-xl p-8">
@@ -176,11 +240,11 @@ export default function ProjectsPage() {
                     >
                       <div className="flex items-center space-x-4">
                         <div className={`h-10 w-10 rounded-full flex items-center justify-center ${
-                          step.status === "完成" 
+                          step.status === t('status.completed')
                             ? "bg-gradient-to-r from-blue-500 to-teal-400" 
                             : "bg-zinc-800"
                         }`}>
-                          {step.status === "完成" ? (
+                          {step.status === t('status.completed') ? (
                             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
@@ -189,7 +253,7 @@ export default function ProjectsPage() {
                           )}
                         </div>
                         <span className={`text-lg ${
-                          step.status === "完成" 
+                          step.status === t('status.completed')
                             ? "text-white" 
                             : "text-zinc-400"
                         }`}>

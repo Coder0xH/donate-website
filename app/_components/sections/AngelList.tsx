@@ -1,9 +1,12 @@
+'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
+import { useTranslation } from '@/app/i18n/client';
 
-const AngelList = () => {
+const AngelList = ({ lng }: { lng: string }) => {
+  const { t } = useTranslation(lng, 'common');
   const [isPaused, setIsPaused] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
@@ -40,7 +43,7 @@ const AngelList = () => {
     <section className="w-full py-16 bg-black overflow-hidden">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl flex justify-center items-center font-bold bg-gradient-to-r from-blue-400 text-center mb-12 to-teal-400 bg-clip-text text-transparent">
-          希漫小天使
+          {t('angels.title')}
         </h2>
         <div className="mx-auto max-w-[90rem] px-4">
           <div 

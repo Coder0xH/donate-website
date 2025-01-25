@@ -4,8 +4,11 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FloatingCrypto } from '@/app/_components/ui/FloatingCrypto';
 import { cryptoIcons } from '@/app/_constants/icons';
+import { useTranslation } from '@/app/i18n/client';
 
-export default function HeroSection() {
+export default function HeroSection({ lng }: { lng: string }) {
+  const { t } = useTranslation(lng, 'common');
+
   return (
     <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="absolute inset-0">
@@ -48,7 +51,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              Web3 捐赠公益平台
+              {t('hero.platform')}
             </motion.span>
           </motion.div>
           
@@ -59,11 +62,11 @@ export default function HeroSection() {
             transition={{ delay: 0.3 }}
           >
             <span className="inline-block bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
-            链上公益
+              {t('hero.title')}
             </span>
             <br />
             <span className="inline-block mt-2 text-zinc-300">
-            透明追踪
+              {t('hero.subtitle')}
             </span>
           </motion.h1>
           
@@ -73,9 +76,9 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            透明捐赠，区块链见证每份爱，通过区块链技术，让每一笔捐赠都清晰可见。目前已募集
+            {t('hero.description')}
             <span className="text-blue-400 font-semibold animate-pulse"> ￥2,100,000 </span>
-            用于四川理塘希漫教育中心
+            {t('hero.stats.for')}
           </motion.p>
 
           <motion.div
@@ -84,23 +87,23 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <Link href="/donate">
+            <Link href={`/${lng}/donate`}>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="group px-8 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-teal-400 text-white font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all relative overflow-hidden"
               >
-                <span className="relative z-10">立即捐赠</span>
+                <span className="relative z-10">{t('hero.donate')}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.button>
             </Link>
-            <Link href="/projects">
+            <Link href={`/${lng}/projects`}>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-3 rounded-xl bg-zinc-900 text-zinc-300 font-semibold hover:bg-zinc-800 transition-all border border-zinc-800 hover:border-blue-500/50"
               >
-                了解项目
+                {t('hero.learnMore')}
               </motion.button>
             </Link>
           </motion.div>
