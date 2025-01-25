@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Modal from "../Modal";
+import Modal from "@/components/ui/Modal";
 
 interface StatCardProps {
   icon: any;
