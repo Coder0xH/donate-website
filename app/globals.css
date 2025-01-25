@@ -2,30 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 重置所有元素的边距和内边距 */
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 255, 255, 255;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --foreground-rgb: 255, 255, 255;
-}
-
-html, body {
-  scroll-behavior: smooth;
-  scroll-padding-top: 4rem;
+html,
+body {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
   position: relative;
-  min-height: 100vh;
-  overflow-x: hidden;
+  color: rgb(var(--foreground-rgb));
 }
 
 /* 平滑滚动到锚点的动画 */

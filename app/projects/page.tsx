@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FaSchool, FaBookReader, FaChalkboardTeacher } from 'react-icons/fa';
 
@@ -10,7 +9,21 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 }
 };
 
-const ProjectCard = ({ title, description, icon: Icon, stats }: any) => (
+interface ProjectStat {
+  id: string;
+  value: string;
+  label: string;
+}
+
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  icon: any;
+  stats: ProjectStat[];
+}
+
+const ProjectCard = ({ title, description, icon: Icon, stats, id }: Project) => (
   <motion.div 
     variants={fadeInUp}
     whileHover={{ y: -5 }}
@@ -24,8 +37,8 @@ const ProjectCard = ({ title, description, icon: Icon, stats }: any) => (
     </div>
     <p className="text-gray-600 dark:text-gray-400 mb-4">{description}</p>
     <div className="grid grid-cols-2 gap-4">
-      {stats.map((stat: any, index: number) => (
-        <div key={index} className="bg-gray-50 dark:bg-dark-200 p-3 rounded-xl">
+      {stats.map((stat) => (
+        <div key={stat.id} className="bg-gray-50 dark:bg-dark-200 p-3 rounded-xl">
           <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">{stat.value}</div>
           <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
         </div>
@@ -35,34 +48,47 @@ const ProjectCard = ({ title, description, icon: Icon, stats }: any) => (
 );
 
 export default function ProjectsPage() {
-  const projects = [
+  const projects: Project[] = [
     {
+      id: "school-construction",
       title: "西藏小学建设",
       description: "为西藏偏远地区建设现代化小学，提供优质教育资源",
       icon: FaSchool,
       stats: [
-        { value: "200+", label: "受益学生" },
-        { value: "15", label: "教师人数" }
+        { id: 'donated', value: '￥210万', label: '已募集' },
+        { id: 'students', value: '200+', label: '受益学生' },
+        { id: 'projects', value: '3', label: '进行中项目' }
       ]
     },
     {
-      title: "教育资源配套",
+      id: "equipment-setup",
+      title: "教学设备配置",
       description: "配备现代化教学设备和丰富的图书资源",
       icon: FaBookReader,
       stats: [
-        { value: "2000+", label: "图书数量" },
-        { value: "100%", label: "设备配置" }
+        { id: 'donated', value: '￥210万', label: '已募集' },
+        { id: 'students', value: '200+', label: '受益学生' },
+        { id: 'projects', value: '3', label: '进行中项目' }
       ]
     },
     {
-      title: "教师培训",
+      id: "teacher-training",
+      title: "教师培训计划",
       description: "为当地教师提供专业培训和发展机会",
       icon: FaChalkboardTeacher,
       stats: [
-        { value: "24", label: "培训课时" },
-        { value: "100%", label: "教师参与" }
+        { id: 'donated', value: '￥210万', label: '已募集' },
+        { id: 'students', value: '200+', label: '受益学生' },
+        { id: 'projects', value: '3', label: '进行中项目' }
       ]
     }
+  ];
+
+  const buildingSteps = [
+    { id: 'planning', status: "完成", text: "选址和规划设计" },
+    { id: 'infrastructure', status: "完成", text: "基础设施建设" },
+    { id: 'main-building', status: "完成", text: "教学楼主体工程" },
+    { id: 'interior', status: "进行中", text: "内部装修和设备安装" }
   ];
 
   return (
@@ -105,8 +131,8 @@ export default function ProjectsPage() {
           initial="hidden"
           animate="visible"
         >
-          {projects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
+          {projects.map((project) => (
+            <ProjectCard key={project.id} {...project} />
           ))}
         </motion.div>
 
@@ -119,14 +145,9 @@ export default function ProjectsPage() {
           <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-8 text-center">建设进度</h2>
           <div className="bg-white dark:bg-dark-100 rounded-2xl p-8 shadow-lg">
             <div className="space-y-8">
-              {[
-                { status: "完成", text: "选址和规划设计" },
-                { status: "完成", text: "基础设施建设" },
-                { status: "完成", text: "教学楼主体工程" },
-                { status: "进行中", text: "内部装修和设备安装" }
-              ].map((step, index) => (
+              {buildingSteps.map((step) => (
                 <motion.div 
-                  key={index}
+                  key={step.id}
                   className="flex items-center space-x-4"
                   variants={fadeInUp}
                 >
