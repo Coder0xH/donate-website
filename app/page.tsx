@@ -1,14 +1,15 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaEthereum, 
   FaBitcoin, 
   FaHeart,
   FaMonero,
-  FaDollarSign
+  FaDollarSign,
+  FaRocket
 } from 'react-icons/fa';
 import { 
   SiSolana, 
@@ -18,6 +19,7 @@ import {
   SiBinance,
   SiCardano
 } from 'react-icons/si';
+import Modal from './components/Modal';
 
 const cryptoIcons = [
   { icon: FaEthereum, color: 'text-blue-500' },
@@ -77,6 +79,83 @@ const FloatingCrypto = ({ Icon, color }: { Icon: any; color: string }) => (
     <Icon className={`w-6 h-6 ${color} opacity-30`} />
   </motion.div>
 );
+
+const StatCard = ({ icon: Icon, value, title, color, details }: { 
+  icon: any; 
+  value: string; 
+  title: string; 
+  color: string;
+  details: {
+    title: string;
+    items: Array<{
+      date: string;
+      amount: string;
+      description: string;
+      status: string;
+    }>;
+  };
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const startDate = "Jan 24, 8:00 PM";
+  const endDate = "Feb 23, 8:00 PM";
+  const participants = 722;
+
+  return (
+    <>
+      <motion.div
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        onClick={() => setIsOpen(true)}
+        className="relative group cursor-pointer"
+      >
+        <div className="bg-[#1C1C1C] hover:bg-[#252525] rounded-2xl p-6 transition-all duration-200">
+          <div className="relative flex flex-col items-center text-center">
+            <Icon className={`w-8 h-8 ${color.replace('bg-', 'text-')} mb-4`} />
+            <h3 className="text-3xl font-bold text-white mb-2">
+              {value}
+            </h3>
+            <p className="text-white/60">{title}</p>
+          </div>
+        </div>
+      </motion.div>
+
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title={details.title}
+        subtitle={`${startDate}–${endDate}`}
+        participants={participants}
+        endTime="04d 08h 44m 13s"
+        color={color}
+      >
+        <div className="space-y-4">
+          <div className="text-lg text-white/90 mb-2">Rewards</div>
+          {details.items.map((item, index) => (
+            <div
+              key={index}
+              className="bg-black/20 backdrop-blur-sm rounded-xl p-4 hover:bg-black/30 transition-all duration-200"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-white/70 text-sm">{item.date}</span>
+                <span className={`px-3 py-1 rounded-full text-xs ${
+                  item.status === '已完成' ? 'bg-green-500/20 text-green-400' :
+                  item.status === '进行中' ? 'bg-blue-500/20 text-blue-400' :
+                  'bg-gray-500/20 text-gray-400'
+                }`}>
+                  {item.status}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-white font-medium text-lg">{item.amount}</span>
+                <span className="text-white/60 text-sm">{item.description}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Modal>
+    </>
+  );
+};
 
 export default function Home() {
   return (
@@ -188,67 +267,278 @@ export default function Home() {
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          {/* 实时捐赠统计 */}
+          <div className="mb-16 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-block mb-8 px-6 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-teal-400/10 border border-blue-500/20"
+            >
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                <span className="text-green-400">实时捐赠追踪</span>
+              </div>
+            </motion.div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <DecayCard
-              title="受益学生"
-              value="200+"
+            <StatCard
               icon={FaEthereum}
+              value="￥2,100,000"
+              title="累计捐赠金额"
+              color="bg-blue-500"
+              details={{
+                title: "捐赠金额明细",
+                items: [
+                  {
+                    date: "2024-01-20",
+                    amount: "500,000 ￥",
+                    description: "教学楼建设项目",
+                    status: "已完成"
+                  },
+                  {
+                    date: "2024-01-15",
+                    amount: "300,000 ￥",
+                    description: "图书馆设备采购",
+                    status: "进行中"
+                  },
+                  {
+                    date: "2024-01-10",
+                    amount: "200,000 ￥",
+                    description: "教师培训项目",
+                    status: "已完成"
+                  }
+                ]
+              }}
             />
-            <DecayCard
-              title="已建成小学"
-              value="1所"
-              icon={FaBitcoin}
+            <StatCard
+              icon={FaHeart}
+              value="200+"
+              title="受益学生"
+              color="bg-rose-500"
+              details={{
+                title: "受益学生统计",
+                items: [
+                  {
+                    date: "2024年第一季度",
+                    amount: "80 名",
+                    description: "小学部学生",
+                    status: "已完成"
+                  },
+                  {
+                    date: "2023年第四季度",
+                    amount: "120 名",
+                    description: "初中部学生",
+                    status: "已完成"
+                  },
+                  {
+                    date: "2023年第三季度",
+                    amount: "50 名",
+                    description: "高中部学生",
+                    status: "进行中"
+                  }
+                ]
+              }}
             />
-            <DecayCard
-              title="区块链透明度"
-              value="100%"
+            <StatCard
               icon={SiSolana}
+              value="100%"
+              title="捐赠执行率"
+              color="bg-teal-500"
+              details={{
+                title: "捐赠执行情况",
+                items: [
+                  {
+                    date: "2024-01-20",
+                    amount: "100%",
+                    description: "教育设备采购",
+                    status: "已完成"
+                  },
+                  {
+                    date: "2024-01-15",
+                    amount: "100%",
+                    description: "助学金发放",
+                    status: "已完成"
+                  },
+                  {
+                    date: "2024-01-10",
+                    amount: "100%",
+                    description: "教师培训",
+                    status: "已完成"
+                  }
+                ]
+              }}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* 最新捐赠动态 */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-teal-500/5 to-transparent" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent inline-block">
+              最新捐赠动态
+            </h2>
+            <p className="mt-4 text-zinc-400">实时展示最新的捐赠流向，确保每一笔捐赠都用于实处</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* 捐赠追踪卡片 */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative group"
+            >
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-teal-400 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse" />
+              <div className="relative bg-black/90 rounded-xl p-6 space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center">
+                      <SiSolana className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-medium">SOL 捐赠</h3>
+                      <p className="text-sm text-zinc-400">2分钟前</p>
+                    </div>
+                  </div>
+                  <span className="text-teal-400 font-semibold">+2.5 SOL</span>
+                </div>
+                <div className="pl-13">
+                  <div className="flex items-center space-x-2 text-sm">
+                    <span className="text-zinc-400">发送至</span>
+                    <span className="font-mono text-blue-400">xb2...8f9d</span>
+                    <motion.div
+                      animate={{
+                        x: [0, 20],
+                        opacity: [0, 1, 0]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                      className="text-teal-400"
+                    >
+                      <FaRocket className="w-4 h-4" />
+                    </motion.div>
+                    <span className="font-mono text-rose-400">xt9...2e4f</span>
+                  </div>
+                  <div className="mt-2 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: "100%" }}
+                      transition={{ duration: 2 }}
+                      className="h-full bg-gradient-to-r from-blue-500 to-teal-400"
+                    />
+                  </div>
+                  <p className="mt-2 text-sm text-green-400">✓ 已完成转账到西藏拉萨某某小学</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* 项目进展卡片 */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative group"
+            >
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-rose-500 to-orange-400 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse" />
+              <div className="relative bg-black/90 rounded-xl p-6">
+                <h3 className="text-xl font-semibold text-rose-400 mb-4">最新项目进展</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center">
+                      <FaHeart className="w-4 h-4 text-rose-400" />
+                    </div>
+                    <div>
+                      <p className="text-white">完成拉萨某某小学教学楼建设</p>
+                      <p className="text-sm text-zinc-400">2024年1月20日</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center">
+                      <FaHeart className="w-4 h-4 text-amber-400" />
+                    </div>
+                    <div>
+                      <p className="text-white">采购100台笔记本电脑</p>
+                      <p className="text-sm text-zinc-400">2024年1月15日</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-teal-500/20 flex items-center justify-center">
+                      <FaHeart className="w-4 h-4 text-teal-400" />
+                    </div>
+                    <div>
+                      <p className="text-white">完成2024年第一季度教师培训</p>
+                      <p className="text-sm text-zinc-400">2024年1月10日</p>
+                    </div>
+                  </div>
+                </div>
+                <Link 
+                  href="/projects" 
+                  className="mt-6 inline-flex items-center text-rose-400 hover:text-rose-300 group"
+                >
+                  查看更多进展
+                  <svg className="w-4 h-4 ml-1 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
       <section className="py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-teal-500/5 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-blue-500/5 to-transparent" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent inline-block">
+              为什么选择我们？
+            </h2>
+            <p className="mt-4 text-zinc-400">区块链技术保证捐赠全程透明，让爱心直达需要的地方</p>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             <GradientCard>
-              <h3 className="text-xl font-semibold text-blue-400 mb-4">区块链捐赠</h3>
-              <p className="text-zinc-400">
-                支持ETH、BTC、SOL等多链捐赠，智能合约确保资金流向完全透明，每一笔捐赠都可以在链上追踪。
-              </p>
-              <div className="mt-6 grid grid-cols-2 gap-3">
-                {['ETH', 'BTC', 'BNB', 'SOL'].map((chain) => (
-                  <div
-                    key={chain}
-                    className="px-4 py-2 rounded-lg bg-zinc-900 text-zinc-400 text-center text-sm border border-zinc-800 hover:border-blue-500/50 transition-colors"
-                  >
-                    {chain}
-                  </div>
-                ))}
+              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-teal-400/20 flex items-center justify-center mb-6">
+                <SiSolana className="w-6 h-6 text-teal-400" />
               </div>
+              <h3 className="text-xl font-semibold text-blue-400 mb-4">极速到账</h3>
+              <p className="text-zinc-400">
+                基于 Solana 的高性能区块链，捐赠资金秒级到账，让帮助不再等待。
+              </p>
             </GradientCard>
 
             <GradientCard>
-              <h3 className="text-xl font-semibold text-teal-400 mb-4">实物捐赠</h3>
+              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-rose-500/20 to-orange-400/20 flex items-center justify-center mb-6">
+                <FaHeart className="w-6 h-6 text-rose-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-rose-400 mb-4">全程追踪</h3>
               <p className="text-zinc-400">
-                接受教育设备、图书、文具等物品捐赠，所有捐赠物品都将用于改善西藏地区学校的教学条件。
+                区块链技术确保每一笔捐赠都可追踪，资金流向清晰透明。
               </p>
-              <Link 
-                href="/donate" 
-                className="mt-6 inline-flex items-center text-blue-400 hover:text-blue-300 group"
-              >
-                查看捐赠指南
-                <svg className="w-4 h-4 ml-1 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
+            </GradientCard>
+
+            <GradientCard>
+              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-400/20 flex items-center justify-center mb-6">
+                <FaDollarSign className="w-6 h-6 text-amber-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-amber-400 mb-4">多链支持</h3>
+              <p className="text-zinc-400">
+                支持ETH、BTC、SOL等多链捐赠，让爱心不受限制。
+              </p>
             </GradientCard>
           </motion.div>
         </div>
