@@ -27,29 +27,31 @@ export default function StatsSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <StatCard
             icon={FaEthereum}
-            value="￥2,100,000"
-            title="累计捐赠金额"
+            value="￥5,000,000"
+            title="累计捐赠:￥2,100,000"
             color="bg-blue-500"
+            endTime="2024-06-30"
             details={{
               title: "捐赠金额明细",
+             
               items: [
                 {
                   date: "2024-01-20",
-                  amount: "500,000 ￥",
+                  amount: "2,100,000 ￥",
                   description: "教学楼建设项目",
                   status: "已完成"
                 },
                 {
-                  date: "2024-01-15",
-                  amount: "300,000 ￥",
+                  date: "2024-01-20 --- 2024-06-30",
+                  amount: "2,900,000 ￥",
                   description: "图书馆设备采购",
                   status: "进行中"
                 },
                 {
-                  date: "2024-01-10",
-                  amount: "200,000 ￥",
+                  date: "2024-01-20 --- 2024-06-30",
+                  amount: "5,000 ￥",
                   description: "教师培训项目",
-                  status: "已完成"
+                  status: "进行中"
                 }
               ]
             }}
@@ -59,26 +61,27 @@ export default function StatsSection() {
             value="200+"
             title="受益学生"
             color="bg-rose-500"
+            endTime="目标人数：200名"
             details={{
               title: "受益学生统计",
               items: [
                 {
                   date: "2024年第一季度",
-                  amount: "80 名",
-                  description: "小学部学生",
-                  status: "已完成"
+                  amount: "15+ 名",
+                  // description: "小学部学生",
+                  status: "进行中"
                 },
                 {
                   date: "2023年第四季度",
-                  amount: "120 名",
-                  description: "初中部学生",
+                  amount: "10 名",
+                  // description: "初中部学生",
                   status: "已完成"
                 },
                 {
                   date: "2023年第三季度",
-                  amount: "50 名",
-                  description: "高中部学生",
-                  status: "进行中"
+                  amount: "5 名",
+                  // description: "高中部学生",
+                  status: "已完成"
                 }
               ]
             }}
@@ -88,25 +91,26 @@ export default function StatsSection() {
             value="100%"
             title="捐赠执行率"
             color="bg-teal-500"
+            endTime={null}
             details={{
               title: "捐赠执行情况",
               items: [
                 {
                   date: "2024-01-20",
                   amount: "100%",
-                  description: "教育设备采购",
+                  description: "教学楼搭建项目",
                   status: "已完成"
                 },
                 {
                   date: "2024-01-15",
                   amount: "100%",
-                  description: "助学金发放",
+                  description: "图书馆设备采购",
                   status: "已完成"
                 },
                 {
                   date: "2024-01-10",
                   amount: "100%",
-                  description: "教师培训",
+                  description: "教师培训项目",
                   status: "已完成"
                 }
               ]

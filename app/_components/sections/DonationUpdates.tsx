@@ -4,8 +4,77 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { SiSolana } from 'react-icons/si';
 import { FaRocket, FaHeart } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+
+// 生成随机 SOL 地址
+const generateRandomAddress = () => {
+  const chars = '0123456789abcdef';
+  return Array(4).fill(0).map(() => chars[Math.floor(Math.random() * chars.length)]).join('');
+};
+
+// 生成随机 SOL 数量
+const generateRandomAmount = () => {
+  return (Math.random() * 5 + 0.1).toFixed(2);
+};
+
+// 生成随机时间（1-5分钟前）
+const generateRandomTime = () => {
+  return Math.floor(Math.random() * 5) + 1;
+};
+
+// 模拟捐赠数据类型
+interface DonationData {
+  amount: string;
+  fromAddress: string;
+  toAddress: string;
+  timeAgo: number;
+  recipient: string;
+}
+
+// 随机接收方学校列表
+const RECIPIENTS = [
+  '西藏拉萨某某小学',
+  '青海玉树某某中学',
+  '甘肃临夏某某小学',
+  '云南怒江某某小学',
+  '四川甘孜某某中学',
+];
 
 export default function DonationUpdates() {
+  const [donation, setDonation] = useState<DonationData>({
+    amount: '2.5',
+    fromAddress: 'xb2...8f9d',
+    toAddress: 'xt9...2e4f',
+    timeAgo: 2,
+    recipient: RECIPIENTS[0],
+  });
+
+  useEffect(() => {
+    const updateDonation = () => {
+      const newDonation: DonationData = {
+        amount: generateRandomAmount(),
+        fromAddress: `x${generateRandomAddress()}...${generateRandomAddress()}`,
+        toAddress: `x${generateRandomAddress()}...${generateRandomAddress()}`,
+        timeAgo: generateRandomTime(),
+        recipient: RECIPIENTS[Math.floor(Math.random() * RECIPIENTS.length)],
+      };
+      setDonation(newDonation);
+    };
+
+    // 随机间隔（5-15秒）更新数据
+    const getRandomInterval = () => (Math.random() * 10000 + 5000);
+    
+    const scheduleNextUpdate = () => {
+      const interval = getRandomInterval();
+      setTimeout(() => {
+        updateDonation();
+        scheduleNextUpdate();
+      }, interval);
+    };
+
+    scheduleNextUpdate();
+  }, []);
+
   return (
     <section className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-to-t from-transparent via-teal-500/5 to-transparent" />
@@ -33,16 +102,21 @@ export default function DonationUpdates() {
                     <SiSolana className="w-6 h-6 text-teal-400" />
                   </div>
                   <div>
-                    <h3 className="text-white font-medium">SOL 捐赠</h3>
-                    <p className="text-sm text-zinc-400">2分钟前</p>
+                    <Link href="/donate">
+                      <button className="group relative inline-flex items-center justify-center px-6 py-2 font-semibold text-white transition-all duration-200 ease-in-out rounded-lg bg-gradient-to-r from-blue-500 to-teal-400 hover:scale-105 active:scale-95">
+                        <span className="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] opacity-0 blur transition-all duration-200 group-hover:opacity-70 animate-pulse" />
+                        <FaHeart className="w-4 h-4 mr-2 text-[red] animate-pulse" />
+                        <span className='text-black'>我要捐赠</span>
+                      </button>
+                    </Link>
                   </div>
                 </div>
-                <span className="text-teal-400 font-semibold">+2.5 SOL</span>
+                <span className="text-teal-400 font-semibold">+{donation.amount} SOL</span>
               </div>
               <div className="pl-13">
                 <div className="flex items-center space-x-2 text-sm">
                   <span className="text-zinc-400">发送至</span>
-                  <span className="font-mono text-blue-400">xb2...8f9d</span>
+                  <span className="font-mono text-blue-400">{donation.fromAddress}</span>
                   <motion.div
                     animate={{
                       x: [0, 20],
@@ -57,17 +131,18 @@ export default function DonationUpdates() {
                   >
                     <FaRocket className="w-4 h-4" />
                   </motion.div>
-                  <span className="font-mono text-rose-400">xt9...2e4f</span>
+                  <span className="font-mono text-rose-400">CmE7...2YwM</span>
                 </div>
                 <div className="mt-2 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
                   <motion.div
+                    key={donation.fromAddress}
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
                     transition={{ duration: 2 }}
                     className="h-full bg-gradient-to-r from-blue-500 to-teal-400"
                   />
                 </div>
-                <p className="mt-2 text-sm text-green-400">✓ 已完成转账到西藏拉萨某某小学</p>
+                <p className="mt-2 text-sm text-green-400">✓ 正在进行转账到四川理塘希漫教育中心</p>
               </div>
             </div>
           </motion.div>
@@ -88,7 +163,7 @@ export default function DonationUpdates() {
                     <FaHeart className="w-4 h-4 text-rose-400" />
                   </div>
                   <div>
-                    <p className="text-white">完成拉萨某某小学教学楼建设</p>
+                    <p className="text-white">完成四川理塘希漫教育中心建设</p>
                     <p className="text-sm text-zinc-400">2024年1月20日</p>
                   </div>
                 </div>
@@ -97,7 +172,7 @@ export default function DonationUpdates() {
                     <FaHeart className="w-4 h-4 text-amber-400" />
                   </div>
                   <div>
-                    <p className="text-white">采购100台笔记本电脑</p>
+                    <p className="text-white">采购教学设备100多台</p>
                     <p className="text-sm text-zinc-400">2024年1月15日</p>
                   </div>
                 </div>

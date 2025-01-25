@@ -40,7 +40,7 @@ const CopyButton = ({ address }: { address: string }) => {
 
   return (
     <>
-      <motion.button 
+      <motion.button
         onClick={handleCopy}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
@@ -59,10 +59,11 @@ const CopyButton = ({ address }: { address: string }) => {
 };
 
 const chainIcons = {
-  ethereum: <FaEthereum className="w-8 h-8 text-[#627EEA]" />,
-  bitcoin: <FaBitcoin className="w-8 h-8 text-[#F7931A]" />,
-  solana: <SiSolana className="w-8 h-8 text-[#00FFA3]" />,
-  binance: <RiNftFill className="w-8 h-8 text-[#F0B90B]" />
+  ETH: <FaEthereum className="w-8 h-8 text-[#627EEA]" />,
+  BTC: <FaBitcoin className="w-8 h-8 text-[#F7931A]" />,
+  SOL: <SiSolana className="w-8 h-8 text-[#00FFA3]" />,
+  BNB: <RiNftFill className="w-8 h-8 text-[#F0B90B]" />,
+  TRX: <img src="/logos/trx.jpeg" className="w-8 h-8" />
 };
 
 const physicalDonations = [
@@ -91,25 +92,26 @@ const physicalDonations = [
 
 export default function DonatePage() {
   const walletAddresses = {
-    ethereum: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
-    bitcoin: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
-    binance: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
-    solana: '5KKsRYtxKkGBxzVUk7H6vSB3rKJJJmxNqzx1E6Vf9Fh6'
+    ETH: '0x70315b79b8e6769c7208aab3031ccb364ea6b83d',
+    BNB: '0x70315b79b8e6769c7208aab3031ccb364ea6b83d',
+    SOL: 'CmE7JAWnwotBEvXSqRsJt2igeVQoXz3fkYjYu3cF2YwM',
+    TRX: 'TU86v4cSKTdthB8GNz1rvv8iT6Y67xn1gX',
+    BTC: 'bc1p3hcn7snsfpt80g5n3y6q4zsmqq3axyqswvutmmmc32rqpq4pnf5q2z4mxa',
   };
 
   return (
     <main className="min-h-screen bg-black">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-indigo-500/20 via-transparent to-transparent opacity-50" />
-      
+
       <section className="relative pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <motion.div 
+          <motion.div
             className="text-center mb-20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -121,7 +123,7 @@ export default function DonatePage() {
             </motion.div>
             <h1 className="text-6xl md:text-7xl font-bold mb-8">
               <span className="inline-block bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-                链上公益
+                希漫公益
               </span>
               <br />
               <span className="inline-block mt-4 text-white/90">
@@ -216,7 +218,7 @@ export default function DonatePage() {
                     ))}
                   </div>
 
-                  <motion.div 
+                  <motion.div
                     whileHover={{ y: -2 }}
                     className="mt-8"
                   >
@@ -225,11 +227,11 @@ export default function DonatePage() {
                         实物捐赠地址
                       </h3>
                       <p className="text-white/60 mb-4">
-                        西藏自治区拉萨市城关区北京中路28号
+                        广东省深圳市南山区西丽街道沙河西路3019号希漫天使基金会
                         <br />
-                        希漫天使公益基金会
+                        姓名：洛绒降央
                         <br />
-                        联系电话：+86 891-1234567
+                        电话号码：13408447175
                       </p>
                       <p className="text-sm text-white/40">
                         工作时间：周一至周五 9:00-17:00
@@ -241,14 +243,14 @@ export default function DonatePage() {
             </motion.div>
           </div>
 
-          <motion.div 
+          <motion.div
             className="text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <Link 
-              href="/impact" 
+            <Link
+              href="/impact"
               className="inline-flex items-center space-x-2 text-indigo-400 hover:text-indigo-300 transition-colors group"
             >
               <span className="text-lg">了解我们的影响力</span>

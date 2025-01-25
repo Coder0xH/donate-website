@@ -5,12 +5,13 @@ export interface StatCardProps {
   title: string;
   value: string;
   color?: string;
+  endTime?: string | null;
   details?: {
     title: string;
     items: {
       date: string;
       amount: string;
-      description: string;
+      description?: string;
       status: string;
     }[];
   };

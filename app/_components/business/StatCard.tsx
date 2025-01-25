@@ -10,7 +10,8 @@ const StatCard: React.FC<StatCardProps> = ({
   value, 
   title, 
   color, 
-  details 
+  details,
+  endTime
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -95,10 +96,8 @@ const StatCard: React.FC<StatCardProps> = ({
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
           title={details.title}
-          subtitle="Jan 24, 8:00 PM–Feb 23, 8:00 PM"
-          participants={722}
-          endTime="04d 08h 44m 13s"
           color={color}
+          endTime={endTime}
         >
           <div className="space-y-3">
             {details.items.map((item, index) => (
@@ -118,7 +117,7 @@ const StatCard: React.FC<StatCardProps> = ({
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-white font-medium text-xl">{item.amount}</span>
-                  <span className="text-white/50 text-sm">{item.description}</span>
+                  {item?.description && <span className="text-white/50 text-sm">{item.description}</span>}
                 </div>
               </div>
             ))}

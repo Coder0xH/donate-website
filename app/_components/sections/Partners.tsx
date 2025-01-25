@@ -3,6 +3,18 @@
 import LogoWall from '@/components/ui/LogoWall/LogoWall';
 
 export default function Partners() {
+  const partners = [
+    { imgUrl: '/collab/catcher.png', altText: "Catcher Logo" },
+    { imgUrl: '/collab/ctaiks.png', altText: "CTAIKS Logo" },
+    { imgUrl: '/collab/loyal.png', altText: "Loyal Logo" },
+    { imgUrl: '/collab/metaera.png', altText: "Metaera Logo" },
+    { imgUrl: '/collab/odaily.png', altText: "Odaily Logo" },
+    { imgUrl: '/collab/plume.jpg', altText: "Plume Logo" },
+    { imgUrl: '/collab/simandao.png', altText: "Simandao Logo" },
+    { imgUrl: '/collab/startoken.jpg', altText: "Startoken Logo" },
+    { imgUrl: '/collab/suplayer.png', altText: "Suplayer Logo" },
+  ];
+  
   return (
     <section className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-to-t from-transparent via-blue-500/5 to-transparent" />
@@ -16,7 +28,7 @@ export default function Partners() {
 
         <div className="relative w-full max-w-5xl mx-auto">
           <LogoWall
-            items={Array(6).fill({ imgUrl: '/logos/solana-logo.svg', altText: "Solana Logo" })}
+            items={partners}
             direction="horizontal"
             pauseOnHover={true}
             size="clamp(6rem, 1rem + 15vmin, 15rem)"

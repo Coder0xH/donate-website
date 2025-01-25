@@ -59,11 +59,11 @@ export default function HeroSection() {
             transition={{ delay: 0.3 }}
           >
             <span className="inline-block bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
-              透明公益
+            链上公益
             </span>
             <br />
             <span className="inline-block mt-2 text-zinc-300">
-              链上追踪
+            透明追踪
             </span>
           </motion.h1>
           
@@ -73,9 +73,9 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            通过区块链技术，让每一笔捐赠都清晰可见。目前已募集
+            透明捐赠，区块链见证每份爱，通过区块链技术，让每一笔捐赠都清晰可见。目前已募集
             <span className="text-blue-400 font-semibold animate-pulse"> ￥2,100,000 </span>
-            用于西藏教育事业
+            用于四川理塘希漫教育中心
           </motion.p>
 
           <motion.div

@@ -10,7 +10,7 @@ interface ModalProps {
   title: string;
   subtitle?: string;
   participants?: number;
-  endTime?: string;
+  endTime?: string | null;
   children: React.ReactNode;
   color?: string;
 }
@@ -67,27 +67,6 @@ const Modal: React.FC<ModalProps> = ({
                 <div className="space-y-4">
                   <div>
                     <h3 className="text-[32px] font-bold text-white leading-tight">{title}</h3>
-                    {subtitle && (
-                      <div className="mt-3 flex items-center space-x-3 text-sm text-white/80">
-                        <div className="flex items-center space-x-2">
-                          <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current opacity-60">
-                            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm1-13h-2v6l5.25 3.15.75-1.23-4-2.37V7z"/>
-                          </svg>
-                          <span>{subtitle}</span>
-                        </div>
-                        {participants && (
-                          <>
-                            <span className="text-white/40">•</span>
-                            <div className="flex items-center space-x-2">
-                              <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current opacity-60">
-                                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V18h14v-1.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05.02.01.03.03.04.04 1.14.83 1.93 1.94 1.93 3.41V18h6v-1.5c0-2.33-4.67-3.5-7-3.5z"/>
-                              </svg>
-                              <span>{participants} participants</span>
-                            </div>
-                          </>
-                        )}
-                      </div>
-                    )}
                   </div>
                   
                   {endTime && (

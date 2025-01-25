@@ -39,12 +39,12 @@ const ProjectCard = ({ title, description, icon: Icon, stats }: Omit<Project, 'i
         <h3 className="text-xl font-semibold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">{title}</h3>
       </div>
       <p className="text-zinc-400 mb-6">{description}</p>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-3">
         {stats.map((stat) => (
           <div key={stat.id} className="relative group">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/50 to-teal-400/50 rounded-xl opacity-0 group-hover:opacity-100 transition duration-300 blur" />
-            <div className="relative bg-zinc-900/80 p-4 rounded-lg">
-              <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">{stat.value}</div>
+            <div className="relative bg-zinc-900/80 p-3 rounded-lg">
+              <div className="text-xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">{stat.value}</div>
               <div className="text-sm text-zinc-500">{stat.label}</div>
             </div>
           </div>
@@ -58,8 +58,8 @@ export default function ProjectsPage() {
   const projects: Project[] = [
     {
       id: "school-construction",
-      title: "西藏小学建设",
-      description: "为西藏偏远地区建设现代化小学，提供优质教育资源。通过区块链技术，每一笔建设资金都可追踪、可验证。",
+      title: "四川理塘希漫教育中心建设",
+      description: "为四川理塘希漫教育中心建设现代化小学，提供优质教育资源。通过区块链技术，每一笔建设资金都可追踪、可验证。",
       icon: FaSchool,
       stats: [
         { id: 'donated', value: '￥210万', label: '已募集' },
@@ -131,7 +131,7 @@ export default function ProjectsPage() {
               transition={{ delay: 0.3 }}
             >
               <span className="inline-block bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
-                链上公益
+                希漫公益
               </span>
               <br />
               <span className="inline-block mt-2 text-zinc-300">
