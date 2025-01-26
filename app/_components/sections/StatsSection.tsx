@@ -52,7 +52,7 @@ export default function StatsSection({ lng }: { lng: string }) {
                 },
                 {
                   date: "2024-01-20 --- 2024-06-30",
-                  amount: "5,000 ￥",
+                  amount: "100,000 ￥",
                   description: t('stats.totalDonation.items.training'),
                   status: t('status.inProgress')
                 }

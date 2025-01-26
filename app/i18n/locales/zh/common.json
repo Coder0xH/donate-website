@@ -30,7 +30,7 @@
     },
     "multichain": {
       "title": "多链支持",
-      "description": "支持ETH、BTC、SOL等多链捐赠，让爱心不受限制。"
+      "description": "支持ETH、BTC、SOL、TRON等多链捐赠，让爱心不受限制。"
     }
   },
   "stats": {
