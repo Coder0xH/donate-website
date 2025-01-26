@@ -17,14 +17,8 @@ interface TemplateSection {
   title: string;
   items: FormItem[];
 }
-
-type PageProps = {
-  params: {
-    lng: string;
-  };
-};
-
-const ContactPage = ({ params: { lng } }: PageProps) => {
+const ContactPage = ({ params }: { params: Promise<{ lng: string }> }) => {
+  const { lng } = React.use(params);
   const { t } = useTranslation(lng, 'common');
   const email = 'simandao@outlook.com';
   const [copied, setCopied] = React.useState(false);
