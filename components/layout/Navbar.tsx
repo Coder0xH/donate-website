@@ -38,6 +38,7 @@ export default function Navbar({ lng }: { lng: string }) {
     { href: '/', label: t('nav.home') },
     { href: '/donate', label: t('nav.donate') },
     { href: '/projects', label: t('nav.projects') },
+    { href: '/contact', label: t('nav.contact') },
   ]
 
   return (
@@ -47,7 +48,7 @@ export default function Navbar({ lng }: { lng: string }) {
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
       className="fixed top-6 left-0 right-0 z-50 h-[72px] flex items-center px-4"
     >
-      <div className="max-w-2xl w-full mx-auto">
+      <div className="max-w-7xl w-full mx-auto">
         <motion.div
           layout
           className={`rounded-2xl transition-all duration-500 relative ${
@@ -82,55 +83,108 @@ export default function Navbar({ lng }: { lng: string }) {
           {/* 内容容器 */}
           <div className="relative h-14 px-4 flex items-center justify-between bg-gradient-to-b from-transparent to-black/30 rounded-2xl">
             {/* 左侧 Logo */}
-            <div className="flex items-center space-x-2 w-[88px]">
-              <Image src="/logos/head-logo.png" alt="Solana" width={32} height={32} />
-              <div className="bg-gradient-to-r from-sky-400 to-teal-400 bg-clip-text text-transparent font-bold">
-                <span>Siman</span><span>Angels</span>
-              </div>
-            </div>
+            <motion.div 
+              className="flex items-center space-x-3 w-auto"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <motion.div 
+                className="relative w-10 h-10"
+                whileHover={{ 
+                  scale: 1.1,
+                  rotate: [0, -5, 5, -5, 0],
+                }}
+                transition={{ 
+                  scale: { type: "spring", stiffness: 400, damping: 17 },
+                  rotate: { duration: 0.5, ease: "easeInOut" }
+                }}
+              >
+                {/* Logo背景 */}
+                <motion.div
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background: 'linear-gradient(45deg, rgba(139, 92, 246, 0.5), rgba(45, 212, 191, 0.5))',
+                    filter: 'blur(8px)',
+                  }}
+                  animate={{
+                    opacity: [0.5, 0.7, 0.5],
+                    scale: [0.9, 1.1, 0.9],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                
+                {/* Logo容器 */}
+                <motion.div 
+                  className="relative w-full h-full rounded-full overflow-hidden"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ 
+                    opacity: 1, 
+                    scale: 1,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    ease: "easeOut"
+                  }}
+                >
+                  <Image 
+                    src="/logos/head-logo.png" 
+                    alt="SimAngel" 
+                    width={40} 
+                    height={40} 
+                    className="w-full h-full object-cover"
+                    priority
+                  />
+                </motion.div>
+              </motion.div>
+              <motion.div 
+                className="flex flex-col"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.div 
+                  className="bg-gradient-to-r from-sky-400 via-purple-500 to-teal-400 bg-clip-text text-transparent font-bold text-lg"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <span>Sim</span><span>Angel</span>
+                </motion.div>
+                <div className="flex items-center space-x-1 text-xs text-gray-400">
+                  <motion.div
+                    animate={{
+                      rotate: [0, 360],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  >
+                    <SiSolana className="text-[#14F195]" />
+                  </motion.div>
+                  <span>Web3 Charity</span>
+                </div>
+              </motion.div>
+            </motion.div>
 
             {/* 中间导航链接 - 桌面端 */}
-            <div className="hidden md:flex items-center space-x-6">
+            <div className="hidden md:flex items-center justify-center space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={`/${lng}${item.href}`}
                   className="relative group"
                 >
-                  <div className="relative px-3 py-2">
-                    <AnimatePresence mode="wait">
-                      {pathname === item.href && (
-                        <motion.div
-                          layoutId="navbar-active"
-                          className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 to-teal-400/10"
-                          initial={{ opacity: 0, scale: 0.95 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.95 }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 300,
-                            damping: 30
-                          }}
-                        />
-                      )}
-                    </AnimatePresence>
-                    <motion.div
-                      layout
-                      className={`relative z-10 text-sm font-medium transition-colors duration-300 ${
-                        pathname === item.href
-                          ? 'bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent drop-shadow-[0_0_3px_rgba(59,130,246,0.3)]'
-                          : 'text-gray-300 group-hover:text-blue-400'
-                      }`}
-                    >
+                  <div className="relative px-4 py-2">
+                    <span className="relative z-10 text-gray-200 group-hover:text-white transition-colors">
                       {item.label}
-                    </motion.div>
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-teal-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-400/50 to-transparent"
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
                 </Link>
               ))}
             </div>

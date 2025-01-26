@@ -3,7 +3,7 @@
     "home": "Home",
     "donate": "Donate",
     "projects": "Projects",
-    "about": "About"
+    "contact": "Contact"
   },
   "hero": {
     "title": "On-Chain Charity",
@@ -271,5 +271,92 @@
       "text": "Learn About Our Impact",
       "link": "/impact"
     }
+  },
+  "volunteer": {
+    "title": "Volunteer Application",
+    "subtitle": "Join us in contributing to Web3 philanthropy",
+    "form": {
+      "personalInfo": {
+        "title": "Personal Information",
+        "name": "Name",
+        "gender": {
+          "label": "Gender",
+          "male": "Male",
+          "female": "Female",
+          "other": "Other"
+        },
+        "age": "Age",
+        "phone": "Phone Number",
+        "email": "Email Address",
+        "address": "Address"
+      },
+      "intention": {
+        "title": "Volunteer Intention",
+        "position": {
+          "label": "Volunteer Position",
+          "fundraising": "Fundraising Management",
+          "eventPlanning": "Event Planning",
+          "logistics": "Logistics Support",
+          "management": "Project Management",
+          "other": "Other"
+        },
+        "duration": {
+          "label": "Duration",
+          "lessThanMonth": "Less than 1 month",
+          "oneToThree": "1-3 months",
+          "moreThanThree": "More than 3 months"
+        },
+        "availability": {
+          "weekday": "Weekday Availability",
+          "weekend": "Weekend Availability"
+        }
+      },
+      "experience": {
+        "title": "Skills & Experience",
+        "skills": "Professional Skills",
+        "hasExperience": "Previous Volunteer Experience"
+      },
+      "emergency": {
+        "title": "Emergency Contact",
+        "name": "Contact Name",
+        "phone": "Contact Phone"
+      },
+      "donation": {
+        "title": "Donation Information",
+        "organization": {
+          "label": "Organization Name",
+          "placeholder": "e.g., XYZ Web3 Foundation"
+        },
+        "amount": {
+          "label": "Donation Amount",
+          "placeholder": "e.g., 500,000 USDT"
+        },
+        "date": {
+          "label": "Donation Date",
+          "placeholder": "YYYY-MM-DD"
+        },
+        "method": {
+          "label": "Donation Method",
+          "options": {
+            "cash": "Cash Donation",
+            "crypto": "Cryptocurrency Donation",
+            "goods": "Goods Donation",
+            "service": "Service Donation",
+            "other": "Other (Please specify)"
+          }
+        },
+        "purpose": {
+          "label": "Donation Purpose",
+          "placeholder": "e.g., Support Web3 education projects and developer training"
+        }
+      },
+      "required": "(Required)",
+      "submit": "Submit Application"
+    },
+    "emailInstructions": "Please send your volunteer application to the following email address using the template below",
+    "emailCopied": "Email address copied to clipboard",
+    "template": {
+      "title": "Application Template"
+    }
   }
-} 
+}

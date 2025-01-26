@@ -3,7 +3,7 @@
     "home": "首页",
     "donate": "捐赠",
     "projects": "项目",
-    "about": "关于"
+    "contact": "联系"
   },
   "hero": {
     "title": "链上公益",
@@ -257,5 +257,92 @@
       "text": "了解我们的影响力",
       "link": "/impact"
     }
+  },
+  "volunteer": {
+    "title": "志愿者申请",
+    "subtitle": "加入我们，一起为Web3公益事业贡献力量",
+    "form": {
+      "personalInfo": {
+        "title": "个人信息",
+        "name": "姓名",
+        "gender": {
+          "label": "性别",
+          "male": "男",
+          "female": "女",
+          "other": "其他"
+        },
+        "age": "年龄",
+        "phone": "联系电话",
+        "email": "邮箱地址",
+        "address": "住址"
+      },
+      "intention": {
+        "title": "志愿意向",
+        "position": {
+          "label": "志愿岗位",
+          "fundraising": "募资管理",
+          "eventPlanning": "活动策划",
+          "logistics": "后勤支持",
+          "management": "项目管理",
+          "other": "其他"
+        },
+        "duration": {
+          "label": "志愿时长",
+          "lessThanMonth": "少于1个月",
+          "oneToThree": "1-3个月",
+          "moreThanThree": "3个月以上"
+        },
+        "availability": {
+          "weekday": "工作日可用时间",
+          "weekend": "周末可用时间"
+        }
+      },
+      "experience": {
+        "title": "技能经验",
+        "skills": "专业技能",
+        "hasExperience": "是否有志愿服务经验"
+      },
+      "emergency": {
+        "title": "紧急联系人",
+        "name": "联系人姓名",
+        "phone": "联系人电话"
+      },
+      "donation": {
+        "title": "捐赠信息",
+        "organization": {
+          "label": "捐赠机构名称",
+          "placeholder": "例如：XYZ Web3 基金会"
+        },
+        "amount": {
+          "label": "捐赠金额",
+          "placeholder": "例如：500,000 USDT"
+        },
+        "date": {
+          "label": "捐赠日期",
+          "placeholder": "YYYY年MM月DD日"
+        },
+        "method": {
+          "label": "捐赠方式",
+          "options": {
+            "cash": "现金捐赠",
+            "crypto": "虚拟货币捐赠",
+            "goods": "物资捐赠",
+            "service": "服务捐赠",
+            "other": "其他（请注明）"
+          }
+        },
+        "purpose": {
+          "label": "捐赠目的",
+          "placeholder": "例如：用于支持Web3技术教育项目、资助开发者培训"
+        }
+      },
+      "required": "（必填）",
+      "submit": "提交申请"
+    },
+    "emailInstructions": "请将您的志愿者申请发送至以下邮箱，并按照下方模板填写内容",
+    "emailCopied": "邮箱地址已复制到剪贴板",
+    "template": {
+      "title": "申请模板"
+    }
   }
-} 
+}
