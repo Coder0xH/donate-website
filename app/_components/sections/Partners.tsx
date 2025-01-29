@@ -15,14 +15,17 @@ export default function Partners({ lng }: { lng: string }) {
     { imgUrl: '/collab/simandao.png', altText: "Simandao Logo" },
     { imgUrl: '/collab/startoken.jpg', altText: "Startoken Logo" },
     { imgUrl: '/collab/suplayer.png', altText: "Suplayer Logo" },
-    { imgUrl: '/collab/cillab1.png', altText: "Xian Logo" },
-    { imgUrl: '/collab/cillab2.png', altText: "Xian Logo" },
-    { imgUrl: '/collab/cillab3.png', altText: "Xian Logo" },
-    { imgUrl: '/collab/cillab4.png', altText: "Xian Logo" },
-    { imgUrl: '/collab/cillab5.png', altText: "Xian Logo" },
-    { imgUrl: '/collab/cillab6.png', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab1.png', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab2.png', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab3.png', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab4.jpg', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab5.png', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab6.png', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab7.jpg', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab8.jpg', altText: "Xian Logo" },
   ];
   
+
   return (
     <section className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-to-t from-transparent via-blue-500/5 to-transparent" />
