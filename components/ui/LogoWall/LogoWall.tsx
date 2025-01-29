@@ -62,14 +62,21 @@ function LogoWall({
     "flex-shrink-0",
     "flex",
     "items-center",
-    "justify-around",
+    "justify-start",
     "gap-[calc(var(--size)/14)]",
     "min-w-full",
-    "animate-scrollX",
-    direction === "vertical" && "flex-col min-h-full animate-scrollY"
+    direction === "vertical" && "flex-col min-h-full"
   ]
     .filter(Boolean)
     .join(" ");
+
+  const forwardScrollStyle = {
+    animation: 'scrollX var(--duration) linear infinite'
+  } as React.CSSProperties;
+
+  const reverseScrollStyle = {
+    animation: 'scrollX var(--duration) linear infinite reverse'
+  } as React.CSSProperties;
 
   const imageClass = [
     "bg-[var(--color-bg-accent)]",
@@ -101,7 +108,7 @@ function LogoWall({
         onMouseEnter={() => pauseOnHover && setIsPaused(true)}
         onMouseLeave={() => pauseOnHover && setIsPaused(false)}
       >
-        <div className={groupClass}>
+        <div className={groupClass} style={forwardScrollStyle}>
           {items.map((item, idx) => (
             <Image
               key={idx}
@@ -112,11 +119,9 @@ function LogoWall({
               className={imageClass}
             />
           ))}
-        </div>
-        <div aria-hidden="true" className={groupClass}>
           {items.map((item, idx) => (
             <Image
-              key={`dup1-${idx}`}
+              key={`clone-${idx}`}
               src={item.imgUrl}
               alt={item.altText}
               width={100}
@@ -132,7 +137,7 @@ function LogoWall({
         onMouseEnter={() => pauseOnHover && setIsPaused(true)}
         onMouseLeave={() => pauseOnHover && setIsPaused(false)}
       >
-        <div className={`${groupClass} reverse-x`}>
+        <div className={groupClass} style={reverseScrollStyle}>
           {items.map((item, idx) => (
             <Image
               key={`rev-${idx}`}
@@ -143,11 +148,9 @@ function LogoWall({
               className={imageClass}
             />
           ))}
-        </div>
-        <div aria-hidden="true" className={`${groupClass} reverse-x`}>
           {items.map((item, idx) => (
             <Image
-              key={`dup2-${idx}`}
+              key={`rev-clone-${idx}`}
               src={item.imgUrl}
               alt={item.altText}
               width={100}
