@@ -7,22 +7,12 @@ export default function Partners({ lng }: { lng: string }) {
   const { t } = useTranslation(lng, 'common');
   
   const partners = [
-    { imgUrl: '/collab/catcher.png', altText: "Catcher Logo" },
-    { imgUrl: '/collab/ctaiks.png', altText: "CTAIKS Logo" },
-    { imgUrl: '/collab/metaera.png', altText: "Metaera Logo" },
-    { imgUrl: '/collab/odaily.png', altText: "Odaily Logo" },
-    { imgUrl: '/collab/plume.jpg', altText: "Plume Logo" },
-    { imgUrl: '/collab/simandao.png', altText: "Simandao Logo" },
-    { imgUrl: '/collab/startoken.jpg', altText: "Startoken Logo" },
-    { imgUrl: '/collab/suplayer.png', altText: "Suplayer Logo" },
-    { imgUrl: '/collab/collab1.png', altText: "Xian Logo" },
-    { imgUrl: '/collab/collab2.png', altText: "Xian Logo" },
-    { imgUrl: '/collab/collab3.png', altText: "Xian Logo" },
-    { imgUrl: '/collab/collab4.jpg', altText: "Xian Logo" },
-    { imgUrl: '/collab/collab5.png', altText: "Xian Logo" },
-    { imgUrl: '/collab/collab6.png', altText: "Xian Logo" },
-    { imgUrl: '/collab/collab7.jpg', altText: "Xian Logo" },
-    { imgUrl: '/collab/collab8.jpg', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab1.jpeg', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab2.jpeg', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab3.jpeg', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab4.jpeg', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab5.jpeg', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab6.jpeg', altText: "Xian Logo" },
   ];
   
 
