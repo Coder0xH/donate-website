@@ -211,7 +211,7 @@ export default function Navbar({ lng }: { lng: string }) {
               {/* 社交媒体图标 */}
               <div className="hidden md:flex items-center gap-3">
                 <motion.a
-                  href="https://x.com/simanangels"
+                  href="https://x.com/WEB3SIMANGEL"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
