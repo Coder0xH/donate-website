@@ -11,8 +11,7 @@ export default function Partners({ lng }: { lng: string }) {
     { imgUrl: '/collab/collab2.jpeg', altText: "Xian Logo" },
     { imgUrl: '/collab/collab3.jpeg', altText: "Xian Logo" },
     { imgUrl: '/collab/collab4.jpeg', altText: "Xian Logo" },
-    { imgUrl: '/collab/collab5.jpeg', altText: "Xian Logo" },
-    { imgUrl: '/collab/collab6.jpeg', altText: "Xian Logo" },
+    { imgUrl: '/collab/collab5.jpeg', altText: "Xian Logo" }
   ];
   
 
