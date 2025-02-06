@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "希漫天使 - Web3公益捐赠平台",
   description: "通过区块链技术实现透明公益，帮助更多需要帮助的人。",
   icons: {
-    icon: "/logos/head-logo.png?t=1706547033",
+    icon: "/logos/head-logo.png",
   },
 };
 
