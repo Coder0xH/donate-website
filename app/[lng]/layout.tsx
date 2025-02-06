@@ -17,9 +17,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "希漫天使 - Web3公益捐赠平台",
   description: "通过区块链技术实现透明公益，帮助更多需要帮助的人。",
-  icons: {
-    icon: "/logos/head-logo.png",
-  },
+  icons: [
+    {
+      rel: 'icon',
+      url: '/logos/head-logo.png',
+    },
+    {
+      rel: 'apple-touch-icon',
+      url: '/logos/head-logo.png',
+    }
+  ]
 };
 
 export default async function RootLayout({
