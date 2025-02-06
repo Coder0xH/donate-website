@@ -2,7 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   generateBuildId: async () => {
-    return 'donate-website'
+    // 添加时间戳强制更新
+    return `donate-website-${Date.now()}`
   },
   images: {
     unoptimized: true
