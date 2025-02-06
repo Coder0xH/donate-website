@@ -17,9 +17,9 @@ export const metadata = {
   title: "希漫天使 - Web3公益捐赠平台",
   description: "通过区块链技术实现透明公益，帮助更多需要帮助的人。",
   icons: {
-    icon: '/head-logo.png',
-    shortcut: '/head-logo.png',
-    apple: '/head-logo.png',
+    icon: '/next.svg',
+    shortcut: '/next.svg',
+    apple: '/next.svg',
   },
 };
 
@@ -34,9 +34,7 @@ export default async function RootLayout({
   const { lng } = resolvedParams;
   return (
     <html lang={lng}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-black min-h-screen`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-black min-h-screen`}>
         <Navbar lng={lng} />
         {children}
       </body>
