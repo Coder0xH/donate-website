@@ -131,7 +131,7 @@ export default function Navbar({ lng }: { lng: string }) {
                   }}
                 >
                   <Image 
-                    src="/logos/head-logo.png" 
+                    src="/head-logo.png" 
                     alt="SimAngel" 
                     width={40} 
                     height={40} 
